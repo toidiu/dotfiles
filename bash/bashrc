@@ -1,0 +1,97 @@
+if [ -f $HOME/.dotfiles/bash/sensible.bash ]; then
+   source $HOME/.dotfiles/bash/sensible.bash
+fi
+
+### Aliases
+
+###
+alias tm="tmux"
+### General
+alias l="ls -al"
+alias cc="clear"
+alias xx="exit"
+alias ..="cd ..;pwd;ls -a"
+alias pp="pwd"
+### Application Aliases
+alias vi="vim"
+### GIT Aliases
+alias gs="git status"
+alias gc="git commit"
+alias ga="git add"
+alias gl="git log --color"
+alias gitl="git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit"
+alias gb="git branch"
+alias gd="git diff --color"
+alias gp="git pull; git fetch --all --prune"
+alias gpp="git push; git push origin --tags"
+
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+#----------
+# ENV
+#----------
+# Rust
+source $HOME/.cargo/env
+export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
+#export CARGO_INCREMENTAL=1
+
+# Kube
+if [ $commands[kubectl] ]; then
+  source <(kubectl completion bash)
+fi
+if [ $commands[helm] ]; then
+  source <(helm completion bash)
+fi
+# Poweramp
+if [ -d "$HOME/project/poweramp-cli-0.4.13" ] ; then
+  export PATH="$HOME/project/poweramp-cli-0.4.13/bin":$PATH
+fi
+# Go
+export GOROOT=/usr/local/Cellar/go/1.9
+export GOPATH=~/.go
+export PATH=$PATH:$(go env GOPATH)/bin
+
+# Servo
+export PKG_CONFIG_PATH=/usr/local/opt/zlib/lib/pkgconfig
+
+export PATH="/usr/local/sbin:$PATH"
+
+
+
+#---------- from bash profile ...
+export PATH=$PATH:~/bin
+
+source ~/.profile
+
+
+export POSTGRES="/Applications/Postgres.app/Contents/Versions/latest/bin"
+export PATH=$POSTGRES:$PATH
+
+
+export ANDROID_HOME="/Users/toidiu/android/android-sdk"
+export PATH=$ANDROID_HOME/platform-tools:$PATH
+export PATH=$ANDROID_HOME/tools:$PATH
+
+export GAE_HOME="/Users/toidiu/android/appengine/appengine-java-sdk-1.9.23"
+export PATH=$GAE_HOME/bin:$PATH
+
+GRADLE_HOME=/Users/toidiu/android/gradle-binary/gradle2.5
+export GRADLE_HOME
+export PATH=$PATH:$GRADLE_HOME/bin
+
+
+
+export PATH="/usr/local/opt/ruby/bin:$PATH"
+
+
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+export PATH="/usr/local/sbin:$PATH"
+export PATH="/usr/local/sbin:$PATH"
+export PATH="/usr/local/sbin:$PATH"
+
+export PATH="$HOME/.cargo/bin:$PATH"
