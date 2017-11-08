@@ -1,13 +1,12 @@
 # This is Git's per-user configuration file.
 [user]
-[user]
-	gcname = toidiu
-	gcemail = toidiu@protonmail.com
+	name = toidiu
+	email = toidiu@protonmail.com
 [alias]
-	gcbr = branch
-	gcco = checkout
-	gcs = status
+	br = branch
+	co = checkout
+	s = status
 [push]
-	gcdefault = simple
+	default = simple
 [core]
 	excludesfile = /Users/toidiu/.gitignore_global
