@@ -1,5 +1,6 @@
 set nocompatible
 
+
 " For any plugins that use this, make their keymappings use comma
 let mapleader = ","
 let maplocalleader = ","
@@ -318,4 +319,9 @@ augroup END
 
 
 
-
+" Typing `$c` on the command line expands to `:e` + the current path, so it's easy to edit a file in
+" the same directory as the current file.
+cnoremap $c e <C-\>eCurrentFileDir()<CR>
+function! CurrentFileDir()
+   return "e " . expand("%:p:h") . "/"
+endfunction
