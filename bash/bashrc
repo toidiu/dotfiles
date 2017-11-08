@@ -2,7 +2,7 @@ if [ -f $HOME/.dotfiles/bash/sensible.bash ]; then
    source $HOME/.dotfiles/bash/sensible.bash
 fi
 
-#export PS1="\w "
+export PS1="\w "
 
 ### Aliases
 alias tm="tmux"
@@ -67,7 +67,7 @@ GIT_PROMPT_FETCH_REMOTE_STATUS=0   # uncomment to avoid fetching remote status
 GIT_PROMPT_SHOW_UNTRACKED_FILES=no # can be no, normal or all; determines counting of untracked files
 GIT_PROMPT_SHOW_CHANGED_FILES_COUNT=0 # uncomment to avoid printing the number of changed files
 # GIT_PROMPT_THEME_FILE=~/.git-prompt-colors.sh
-source $HOME/.dotfiles/bash/bash-git-prompt/gitprompt.sh
+#source $HOME/.dotfiles/bash/bash-git-prompt/gitprompt.sh
 
 #---------- from bash profile ...
 export PATH=$PATH:~/bin
