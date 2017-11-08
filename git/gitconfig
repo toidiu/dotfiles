@@ -3,10 +3,7 @@
 	name = toidiu
 	email = toidiu@protonmail.com
 [alias]
-	br = branch
-	co = checkout
-	s = status
 [push]
 	default = simple
 [core]
-	excludesfile = /Users/toidiu/.gitignore_global
+	excludesfile = /Users/apoorv/.gitignore_global
