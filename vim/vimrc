@@ -33,6 +33,12 @@ noremap <S-H> b
 noremap <S-L> e
 noremap b <C-%>
 
+"custom
+" Trim spaces at EOL and retab. I run `:CLEAN` a lot to clean up files.
+command! TEOL %s/\s\+$//
+command! CLEAN retab | TEOL
+
+
 " Word -----------
 " search and replace
 "noremap e ciw
