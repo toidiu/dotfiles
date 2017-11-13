@@ -2,7 +2,7 @@ if [ -f $HOME/.dotfiles/bash/sensible.bash ]; then
    source $HOME/.dotfiles/bash/sensible.bash
 fi
 
-export PS1="\w "
+#export PS1="\w "
 
 ### Aliases
 alias tm="tmux"
