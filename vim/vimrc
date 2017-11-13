@@ -8,7 +8,18 @@ let maplocalleader = ","
 " Userful macros
 nmap \v :vsplit<CR>
 nmap \s :split<CR>
-nmap \e :NERDTreeToggle<CR>
+nmap \e :<C-U>call ToggleNerdTree()<CR>
+function! ToggleNerdTree()
+  if IsNerdTreeEnabled()
+    execute 'NERDTreeToggle'
+  else
+    execute 'NERDTreeFind'
+  endif
+endfunction
+
+function! IsNerdTreeEnabled()
+    return exists('t:NERDTreeBufName') && bufwinnr(t:NERDTreeBufName) != -1
+endfunction
 
 " Buffers --------
 " switch between last file
