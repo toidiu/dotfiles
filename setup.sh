@@ -11,3 +11,6 @@ ln -si .dotfiles/bash/bashrc .bashrc;
 ln -si .dotfiles/bash/bash_profile .bash_profile;
 ln -si .dotfiles/inputrc .inputrc;
 
+#zsh
+ln -si .dotfiles/zsh/zshrc .zshrc;
+
