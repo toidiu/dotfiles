@@ -1,0 +1,77 @@
+export ZSH=/Users/apoorv/.oh-my-zsh
+
+################ theme
+# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+ZSH_THEME="robbyrussell"
+#ZSH_THEME="agnoster"
+#ZSH_THEME="powerlevel9k/powerlevel9k"
+
+################ custom config
+# so as not the show the hostname
+DEFAULT_USER="toidiu"
+
+################ plugins
+# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(git, cargo, sbt, kubectl, docker)
+
+source $ZSH/oh-my-zsh.sh
+
+################ user config
+## Highlighting
+# brew install zsh-syntax-highlighting
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+## Auto Complete
+if [ $commands[aws] ]; then
+  source /usr/local/share/zsh/site-functions/_aws
+fi
+# Rust
+source $HOME/.cargo/env
+#export CARGO_INCREMENTAL=1
+# Kube
+if [ $commands[kubectl] ]; then
+  source <(kubectl completion zsh)
+fi
+if [ $commands[helm] ]; then
+  source <(helm completion zsh)
+fi
+# Poweramp
+if [ -d "$HOME/project/poweramp-cli-0.4.13" ] ; then
+  export PATH="$HOME/project/poweramp-cli-0.4.13/bin":$PATH
+fi
+
+################ alias
+### General
+alias l="ls -al"
+alias cc="clear"
+alias xx="exit"
+alias ..="cd ..;pwd;ls -a"
+alias pp="pwd"
+
+### Application Aliases
+alias vi="vim"
+
+### GIT Aliases
+alias gs="git status"
+alias gcm="git commit -m"
+alias gca="git commit -am"
+alias gco="git checkout"
+alias gb="git branch"
+alias gbd="git branch -D "
+alias gbn="git checkout -b "
+alias ga="git add"
+alias gl="git log --color"
+alias gitlg="git log -p --color"
+alias gitl="git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit"
+alias gd="git diff --color"
+alias gp="git pull; git fetch --all --prune"
+alias gpp="git push origin HEAD"
+
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/apoorv/Desktop/google-cloud-sdk/path.zsh.inc' ]; then source '/Users/apoorv/Desktop/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/apoorv/Desktop/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/apoorv/Desktop/google-cloud-sdk/completion.zsh.inc'; fi
