@@ -1,8 +1,13 @@
-if [ -f $HOME/.dotfiles/bash/sensible.bash ]; then
-   source $HOME/.dotfiles/bash/sensible.bash
-fi
+#if [ -f $HOME/.dotfiles/bash/sensible.bash ]; then
+#   source $HOME/.dotfiles/bash/sensible.bash
+#fi
 
 #export PS1="\w "
+
+
+bind TAB:menu-complete
+
+
 
 ### Aliases
 alias tm="tmux"
@@ -16,9 +21,9 @@ alias pp="pwd"
 alias vi="vim"
 ### GIT Aliases
 alias gs="git status"
-alias gco="git commit"
+alias gcm="git commit -m"
 alias gca="git commit -am"
-alias gch="git checkout"
+alias gco="git checkout"
 alias gb="git branch"
 alias gbd="git branch -D "
 alias gbn="git checkout -b "
