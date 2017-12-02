@@ -14,3 +14,5 @@ ln -si .dotfiles/inputrc .inputrc;
 #zsh
 ln -si .dotfiles/zsh/zshrc .zshrc;
 
+#tmux
+ln -si .dotfiles/tmux.conf .tmux.conf;

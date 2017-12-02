@@ -15,6 +15,8 @@ nmap \p :set paste!<CR>:set paste?<CR>
 nmap \h :nohlsearch<CR>
 nmap \g :Gstatus<CR>
 nmap \f mt:Goyo<CR>'tzz
+nmap \i vip:sort<CR>
+nmap \s :setlocal invspell<CR>
 
 " Buffers --------
 " switch between last file
@@ -39,21 +41,6 @@ noremap <S-H> b
 noremap <S-L> e
 noremap b <C-%>
 
-"custom
-" Trim spaces at EOL and retab. I run `:CLEAN` a lot to clean up files.
-command! TEOL %s/\s\+$//
-command! CLEAN retab | TEOL
-
-
-" Word -----------
-" search and replace
-"noremap e ciw
-:nnoremap <Leader>s :%s/\<<C-r><C-w>\>//gc<Left><Left><Left>
-
-" I always hit ":W" instead of ":w" because I linger on the shift key...
-command! Q q
-command! W w
-command! Wq wq
 
 " ----------------------------------------------------------------------------
 " PLUGIN SETTINGS
@@ -197,8 +184,6 @@ set scrolloff=5 "Minimal number of screen lines to keep above and below the curs
 set listchars=tab:>-,trail:~,extends:>,precedes:<
 set list "Show tabs as CTRL-I is displayed, display $ after end of line
 "set visualbell t_vb=        " No flashing or beeping at all
-nmap \i vip:sort<CR>
-nmap \s :setlocal invspell<CR>
 
 "asdfasdfasdf
 "filetype plugin indent on
@@ -261,7 +246,23 @@ augroup END
 
 
 
+" ----------------------------------------------------------------------------
+" CUSTOM COMMANDS AND FUNCTIONS
+" ----------------------------------------------------------------------------
+" Trim spaces at EOL and retab. I run `:CLEAN` a lot to clean up files.
+command! TEOL %s/\s\+$//
+command! CLEAN retab | TEOL
 
+" Close all buffers except this one
+command! BufCloseOthers %bd|e#
+
+" search and replace
+:nnoremap <Leader>s :%s/\<<C-r><C-w>\>//gc<Left><Left><Left>
+
+" I always hit ":W" instead of ":w" because I linger on the shift key...
+command! Q q
+command! W w
+command! Wq wq
 
 " Typing `$c` on the command line expands to `:e` + the current path, so it's easy to edit a file in
 " the same directory as the current file.
