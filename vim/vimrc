@@ -9,17 +9,12 @@ let maplocalleader = ","
 nmap \v :vsplit<CR>
 nmap \s :split<CR>
 nmap \e :<C-U>call ToggleNerdTree()<CR>
-function! ToggleNerdTree()
-  if IsNerdTreeEnabled()
-    execute 'NERDTreeToggle'
-  else
-    execute 'NERDTreeFind'
-  endif
-endfunction
 
-function! IsNerdTreeEnabled()
-    return exists('t:NERDTreeBufName') && bufwinnr(t:NERDTreeBufName) != -1
-endfunction
+"new
+nmap \p :set paste!<CR>:set paste?<CR>
+nmap \h :nohlsearch<CR>
+nmap \g :Gstatus<CR>
+nmap \f mt:Goyo<CR>'tzz
 
 " Buffers --------
 " switch between last file
@@ -88,6 +83,12 @@ Plug 'scrooloose/nerdtree'
 
 " GitGutter
 Plug 'airblade/vim-gitgutter'
+
+" fugitive
+Plug 'tpope/vim-fugitive'
+
+" goyo
+Plug 'junegunn/goyo.vim'
 
 call plug#end()
 
@@ -195,6 +196,9 @@ set scrolloff=5 "Minimal number of screen lines to keep above and below the curs
 " Show tab characters, trailing whitespace
 set listchars=tab:>-,trail:~,extends:>,precedes:<
 set list "Show tabs as CTRL-I is displayed, display $ after end of line
+"set visualbell t_vb=        " No flashing or beeping at all
+nmap \i vip:sort<CR>
+nmap \s :setlocal invspell<CR>
 
 "asdfasdfasdf
 "filetype plugin indent on
@@ -265,3 +269,29 @@ cnoremap $c e <C-\>eCurrentFileDir()<CR>
 function! CurrentFileDir()
    return "e " . expand("%:p:h") . "/"
 endfunction
+
+" NerdTree toggle functions
+function! ToggleNerdTree()
+  if IsNerdTreeEnabled()
+    execute 'NERDTreeToggle'
+  else
+    execute 'NERDTreeFind'
+  endif
+endfunction
+
+function! IsNerdTreeEnabled()
+    return exists('t:NERDTreeBufName') && bufwinnr(t:NERDTreeBufName) != -1
+endfunction
+
+" Custom mode for distraction-free editing
+function! ProseMode()
+  "call goyo#execute(0, [])
+  set spell noci nosi noai nolist noshowmode noshowcmd
+  set complete+=s
+  set bg=light
+  if !has('gui_running')
+    "let g:solarized_termcolors=256
+  endif
+  "colors solarized
+endfunction
+command! ProseMode call ProseMode()
