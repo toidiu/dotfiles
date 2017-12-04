@@ -12,9 +12,9 @@ nmap \e :<C-U>call ToggleNerdTree()<CR>
 
 "new
 "nmap \g :Gstatus<CR>
-"nmap \p :set paste!<CR>:set paste?<CR>
-"nmap \h :nohlsearch<CR>
-"nmap \f mt:Goyo<CR>'tzz
+nmap \p :set paste!<CR>:set paste?<CR>
+nmap \h :nohlsearch<CR>
+nmap \f mt:Goyo<CR>'tzz
 "nmap \i vip:sort<CR>
 "nmap \s :setlocal invspell<CR>
 
@@ -74,8 +74,17 @@ Plug 'airblade/vim-gitgutter'
 " fugitive
 Plug 'tpope/vim-fugitive'
 
-" goyo
+" Goyo
 Plug 'junegunn/goyo.vim'
+
+" Commentary
+Plug 'tpope/vim-commentary'
+
+" Surround
+Plug 'tpope/vim-surround'
+
+" Repeat
+Plug 'tpope/vim-repeat'
 
 call plug#end()
 
