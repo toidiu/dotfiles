@@ -86,6 +86,9 @@ Plug 'tpope/vim-surround'
 " Repeat
 Plug 'tpope/vim-repeat'
 
+" Vim Tmux Navigation
+Plug 'christoomey/vim-tmux-navigator'
+
 call plug#end()
 
 " --------------------------------
