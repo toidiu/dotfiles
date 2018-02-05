@@ -7,6 +7,7 @@ ZSH_THEME="robbyrussell"
 ################ custom config
 # so as not the show the hostname
 DEFAULT_USER=$USER
+# POMPT='myPrompt'
 
 ################ plugins
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
@@ -15,6 +16,13 @@ DEFAULT_USER=$USER
 # Add wisely, as too many plugins slow down shell startup.
 
 plugins=(git cargo sbt docker)
+
+
+function rprompt() {
+  kubectl config current-context
+}
+RPROMPT='$FG[031] $(rprompt)%{$reset_color%'
+
 
 source $ZSH/oh-my-zsh.sh
 
@@ -66,6 +74,9 @@ alias tmn="tmux new -s"
 alias tma="tmux attach -t"
 alias tml="tmux ls"
 alias tmd="tmux kill-session -t"
+
+### K8s Aliases
+alias kb="kubectl"
 
 ### GIT Aliases
 alias gs="git status"
