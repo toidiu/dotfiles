@@ -105,9 +105,9 @@ let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 set rtp+=/usr/local/opt/fzf
 set rtp+=~/.fzf
 nmap ; :Buffers<CR>
-nmap <Leader>r :Tags<CR>
+nmap <Leader>t :Tags<CR>
 "nmap <Leader>t :ProjectFiles<CR>
-nmap <Leader>t :Files<CR>
+nmap <Leader>f :Files<CR>
 nmap <Leader>a :Ag<CR>
 
 " ALE
