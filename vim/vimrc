@@ -251,6 +251,7 @@ imap <down> <c-o>gj
 nmap <Leader>g :vertical resize 80%<CR>
 nmap <Leader>z <C-w>=
 nmap f :vertical resize +10<CR>
+nmap F :resize +5<CR>
 
 """auto reload vim----------------------
 augroup AutoReloadVimRC
