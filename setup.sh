@@ -16,3 +16,6 @@ ln -si .dotfiles/zsh/zshrc .zshrc;
 
 #tmux
 ln -si .dotfiles/tmux.conf .tmux.conf;
+
+#ctags
+ln -si .dotfiles/ctags .ctags;
