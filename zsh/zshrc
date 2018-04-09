@@ -40,6 +40,9 @@ fi
 ## Go
 export GOPATH=$HOME/go
 
+## Brew
+export HOMEBREW_NO_ANALYTICS=1
+
 # Rust
 source $HOME/.cargo/env
 #
