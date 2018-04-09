@@ -68,6 +68,7 @@ alias pp="pwd"
 
 ### Application Aliases
 alias vi="vim"
+alias util-kube='kubectl get nodes --label-columns group | grep node | awk '\''{print $1}'\'' | xargs -I {} sh -c '\''echo {} ; kubectl describe node {} | grep Allocated -A 5 | grep -ve Event -ve Allocated -ve percent -ve -- ; echo '\'''
 
 ### Tmux
 alias tm="tmux"
