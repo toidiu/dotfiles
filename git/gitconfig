@@ -1,7 +1,7 @@
 # This is Git's per-user configuration file.
 [user]
 	name = toidiu
-	email = toidiu@protonmail.com
+	email = apoorv@toidiu.com
 [alias]
 [push]
 	default = simple
