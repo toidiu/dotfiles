@@ -16,7 +16,7 @@ nmap \p :set paste!<CR>:set paste?<CR>
 nmap \h :nohlsearch<CR>
 nmap \f mt:Goyo<CR>'tzz
 "nmap \i vip:sort<CR>
-"nmap \s :setlocal invspell<CR>
+nmap \s :setlocal invspell<CR>
 
 " Buffers --------
 " switch between last file
@@ -117,6 +117,10 @@ nmap <Leader>a :Ag<CR>
 " highlight link ALEErrorSign Title
 " let g:ale_linters = {'rust': ['rls']}
 " let g:ale_rust_cargo_use_check = 1
+
+" GOYO
+let g:goyo_width = "120"
+let g:goyo_heith = "80%"
 
 " Supertab
 "runtime syntax/colortest.vim
@@ -305,7 +309,7 @@ endfunction
 
 " Custom mode for distraction-free editing
 function! ProseMode()
-  "call goyo#execute(0, [])
+  call goyo#execute(0, [])
   set spell noci nosi noai nolist noshowmode noshowcmd
   set complete+=s
   set bg=light
