@@ -16,7 +16,7 @@ nmap \p :set paste!<CR>:set paste?<CR>
 nmap \h :nohlsearch<CR>
 nmap \f mt:Goyo<CR>'tzz
 "nmap \i vip:sort<CR>
-nmap \s :setlocal invspell<CR>
+nmap \w :setlocal invspell<CR>
 
 " Buffers --------
 " switch between last file
