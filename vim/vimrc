@@ -92,9 +92,15 @@ Plug 'tpope/vim-repeat'
 " Vim Tmux Navigation
 Plug 'christoomey/vim-tmux-navigator'
 
+" arpeggio (chords)
+Plug 'kana/vim-arpeggio'
+
 call plug#end()
 
 " --------------------------------
+
+" arpeggio
+call arpeggio#map('i', '', 0, 'jk', '<Esc>')
 
 " FZF
 ""git as a project dir
