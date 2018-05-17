@@ -100,8 +100,7 @@ call plug#end()
 " --------------------------------
 
 " arpeggio
-call arpeggio#map('i', '', 0, 'jk', '<Esc>')
-call arpeggio#map('n', '', 0, 'vl', ':VimuxRunLastCommand<CR>')
+call arpeggio#map('n', '', 0, 'jk', ':VimuxRunLastCommand<CR>')
 
 " FZF
 ""git as a project dir
