@@ -38,7 +38,8 @@ if [ $commands[aws] ]; then
 fi
 
 ## Go
-export GOPATH=$HOME/go
+mkdir -p $HOME/projects/go
+export GOPATH=$HOME/projects/go
 
 ## Brew
 export HOMEBREW_NO_ANALYTICS=1
