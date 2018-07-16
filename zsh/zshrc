@@ -40,6 +40,7 @@ fi
 ## Go
 mkdir -p $HOME/projects/go
 export GOPATH=$HOME/projects/go
+export PATH=$PATH:$(go env GOPATH)/bin
 
 ## Brew
 export HOMEBREW_NO_ANALYTICS=1
