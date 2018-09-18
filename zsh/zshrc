@@ -38,8 +38,8 @@ if [ $commands[aws] ]; then
 fi
 
 ## Go
-mkdir -p $HOME/projects/go
-export GOPATH=$HOME/projects/go
+mkdir -p $HOME/project/go
+export GOPATH=$HOME/project/go
 export PATH=$PATH:$(go env GOPATH)/bin
 
 ## Brew
