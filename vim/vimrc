@@ -109,7 +109,7 @@ call arpeggio#map('n', '', 0, 'jk', ':VimuxRunLastCommand<CR>')
 "endfunction
 "command! ProjectFiles execute 'Files' s:find_git_root()
 " gitignore
-let $FZF_DEFAULT_COMMAND = 'ag -g ""'
+let $FZF_DEFAULT_COMMAND = 'rg --files'
 " FZF (replaces Ctrl-P, FuzzyFinder and Command-T)
 set rtp+=/usr/local/opt/fzf
 set rtp+=~/.fzf
@@ -117,7 +117,14 @@ nmap ; :Buffers<CR>
 nmap <Leader>t :Tags<CR>
 "nmap <Leader>t :ProjectFiles<CR>
 nmap <Leader>f :Files<CR>
-nmap <Leader>a :Ag<CR>
+" Similarly, we can apply it to fzf#vim#grep. To use ripgrep instead of ag:
+" command! -bang -nargs=* Rg
+"   \ call fzf#vim#grep(
+"   \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
+"   \   <bang>0 ? fzf#vim#with_preview('up:60%')
+"   \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+"   \   <bang>0)
+nmap <Leader>r :Rg<CR>
 
 " ALE
 " let g:ale_sign_warning = '▲'
