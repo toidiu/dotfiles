@@ -102,6 +102,9 @@ call plug#end()
 
 " --------------------------------
 
+" commentaty
+autocmd FileType sql setlocal commentstring=--\ %s
+
 " arpeggio
 call arpeggio#map('n', '', 0, 'jk', ':VimuxRunLastCommand<CR>')
 
