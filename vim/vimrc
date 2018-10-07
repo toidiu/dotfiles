@@ -95,6 +95,9 @@ Plug 'christoomey/vim-tmux-navigator'
 " arpeggio (chords)
 Plug 'kana/vim-arpeggio'
 
+" vim-polyglot
+Plug 'sheerun/vim-polyglot'
+
 call plug#end()
 
 " --------------------------------
