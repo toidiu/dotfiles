@@ -18,9 +18,12 @@ DEFAULT_USER=$USER
 plugins=(git cargo sbt docker)
 
 
+if [ $commands[kubectl] ]; then
 function rprompt() {
   kubectl config current-context
 }
+fi
+
 ## color chart: https://upload.wikimedia.org/wikipedia/commons/1/15/Xterm_256color_chart.svg
 RPROMPT='$FG[246] $(rprompt)%{$reset_color%'
 
@@ -49,9 +52,9 @@ export HOMEBREW_NO_ANALYTICS=1
 source $HOME/.cargo/env
 #
 # Kube (slow!!)
-#if [ $commands[kubectl] ]; then
-#  source <(kubectl completion zsh)
-#fi
+# if [ $commands[kubectl] ]; then
+#   source <(kubectl completion zsh)
+# fi
 
 # Helm
 #if [ $commands[helm] ]; then
