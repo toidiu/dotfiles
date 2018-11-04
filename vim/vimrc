@@ -95,12 +95,19 @@ Plug 'christoomey/vim-tmux-navigator'
 " arpeggio (chords)
 Plug 'kana/vim-arpeggio'
 
-" vim-polyglot
-Plug 'sheerun/vim-polyglot'
+" vim-vue (syntax)
+Plug 'posva/vim-vue'
 
 call plug#end()
 
+
 " --------------------------------
+
+" SYNTAX - faster syntax highlighting than polygot
+filetype plugin indent on
+
+" make vim-vue faster (syntax)
+let g:vue_disable_pre_processors = 1
 
 " commentaty
 autocmd FileType sql setlocal commentstring=--\ %s
