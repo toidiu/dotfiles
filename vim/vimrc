@@ -98,6 +98,9 @@ Plug 'kana/vim-arpeggio'
 " vim-vue (syntax)
 Plug 'posva/vim-vue'
 
+" vim-toml
+Plug 'cespare/vim-toml'
+
 call plug#end()
 
 
