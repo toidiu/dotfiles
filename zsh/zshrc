@@ -73,6 +73,10 @@ alias cc="clear"
 alias xx="exit"
 alias ..="cd ..;pwd;ls -a"
 alias pp="pwd"
+alias curltime="curl -w '----------------\ntime_namelookup:  %{time_namelookup}\ntime_connect:  %{time_connect}
+time_appconnect:  %{time_appconnect}\ntime_pretransfer:  %{time_pretransfer}\ntime_redirect:  %{time_redirect}
+time_starttransfer:  %{time_starttransfer}\n----------\ntime_total:  %{time_total}\n' -o /dev/null -s"
+
 
 ### Application Aliases
 alias vi="vim"
