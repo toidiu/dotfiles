@@ -118,6 +118,9 @@ autocmd FileType sql setlocal commentstring=--\ %s
 " arpeggio
 call arpeggio#map('n', '', 0, 'jk', ':VimuxRunLastCommand<CR>')
 
+
+
+
 " FZF
 ""git as a project dir
 "function! s:find_git_root()
@@ -131,6 +134,7 @@ set rtp+=/usr/local/opt/fzf
 set rtp+=~/.fzf
 nmap ; :Buffers<CR>
 nmap <Leader>t :Tags<CR>
+nmap <Leader>d :call fzf#vim#tags("'" . expand('<cword>'))<CR>
 "nmap <Leader>t :ProjectFiles<CR>
 nmap <Leader>f :Files<CR>
 " Similarly, we can apply it to fzf#vim#grep. To use ripgrep instead of ag:
