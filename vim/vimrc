@@ -16,6 +16,10 @@ nmap \p :set paste!<CR>:set paste?<CR>
 nmap \h :nohlsearch<CR>
 nmap \f mt:Goyo<CR>'tzz
 "nmap \i vip:sort<CR>
+
+" Spelling ------
+set spelllang=en
+set spellfile=~/.dotfiles/vim/en.utf-8.add
 nmap \w :setlocal invspell<CR>
 
 " Buffers --------
