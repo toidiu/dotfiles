@@ -1,3 +1,6 @@
+#common
+ln -si .dotfiles/commonrc .commonrc;
+
 ln -si .dotfiles/vim .vim;
 ln -si .dotfiles/vim/vimrc .vimrc;
 
