@@ -13,34 +13,6 @@ fi
 bind TAB:menu-complete
 
 
-
-### Aliases
-alias tm="tmux"
-### General
-alias l="ls -al"
-alias cc="clear"
-alias xx="exit"
-alias ..="cd ..;pwd;ls -a"
-alias pp="pwd"
-### Application Aliases
-alias vi="vim"
-### GIT Aliases
-alias gs="git status"
-alias gcm="git commit -m"
-alias gca="git commit -am"
-alias gco="git checkout"
-alias gb="git branch"
-alias gbd="git branch -D "
-alias gbn="git checkout -b "
-alias ga="git add"
-alias gl="git log --color"
-alias gitlg="git log -p --color"
-alias gitl="git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit"
-alias gd="git diff --color"
-alias gp="git pull; git fetch --all --prune"
-alias gpp="git push origin HEAD; git push origin --tags"
-
-
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
 
