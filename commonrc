@@ -1,15 +1,20 @@
 export SBT_OPTS="-Xms512m -Xmx2G -XX:ReservedCodeCacheSize=256m -XX:MaxMetaspaceSize=2G -Dscala.color -XX:+UseG1GC -XX:+UnlockExperimentalVMOptions -XX:MaxGCPauseMillis=100 -XX:+DisableExplicitGC -XX:TargetSurvivorRatio=90 -XX:G1NewSizePercent=50 -XX:G1MaxNewSizePercent=80 -XX:InitiatingHeapOccupancyPercent=10 -XX:G1MixedGCLiveThresholdPercent=50 -XX:+AggressiveOpts -XX:+AlwaysPreTouch"
 
 ## Go
-mkdir -p $HOME/project/go
-export GOPATH=$HOME/project/go
-export PATH=$PATH:$(go env GOPATH)/bin
+if [ $commands[go] ]; then
+  mkdir -p $HOME/project/go
+  export GOPATH=$HOME/project/go
+  export PATH=$PATH:$(go env GOPATH)/bin
+fi
 
 ## Brew
 export HOMEBREW_NO_ANALYTICS=1
 
 # Rust
-source $HOME/.cargo/env
+if [ $commands[cargo] ]; then
+  source $HOME/.cargo/env
+fi
+
 #
 # Kube (slow!!)
 # if [ $commands[kubectl] ]; then
@@ -19,11 +24,6 @@ source $HOME/.cargo/env
 # Helm
 #if [ $commands[helm] ]; then
 #  source <(helm completion zsh)
-#fi
-
-## Poweramp
-#if [ -d "$HOME/project/poweramp-cli-0.4.13" ] ; then
-#  export PATH="$HOME/project/poweramp-cli-0.4.13/bin":$PATH
 #fi
 
 ################ alias

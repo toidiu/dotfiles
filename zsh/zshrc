@@ -46,17 +46,9 @@ if [ $commands[aws] ]; then
   source /usr/local/share/zsh/site-functions/_aws
 fi
 
-## Go
-mkdir -p $HOME/project/go
-export GOPATH=$HOME/project/go
-export PATH=$PATH:$(go env GOPATH)/bin
-
 ## Brew
 export HOMEBREW_NO_ANALYTICS=1
 
-# Rust
-source $HOME/.cargo/env
-#
 # Kube (slow!!)
 # if [ $commands[kubectl] ]; then
 #   source <(kubectl completion zsh)
@@ -66,11 +58,5 @@ source $HOME/.cargo/env
 #if [ $commands[helm] ]; then
 #  source <(helm completion zsh)
 #fi
-
-## Poweramp
-#if [ -d "$HOME/project/poweramp-cli-0.4.13" ] ; then
-#  export PATH="$HOME/project/poweramp-cli-0.4.13/bin":$PATH
-#fi
-
 
 
