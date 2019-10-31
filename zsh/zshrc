@@ -36,27 +36,10 @@ if [ -f ~/.commonrc ]; then
 fi
 
 ################ user config
-## Highlighting
-# brew install zsh-syntax-highlighting
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-
-## Auto Complete
+# AWS CLI
+source /usr/local/aws/bin/aws_zsh_completer.sh
 if [ $commands[aws] ]; then
-  source /usr/local/share/zsh/site-functions/_aws
+  source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi
-
-## Brew
-export HOMEBREW_NO_ANALYTICS=1
-
-# Kube (slow!!)
-# if [ $commands[kubectl] ]; then
-#   source <(kubectl completion zsh)
-# fi
-
-# Helm
-#if [ $commands[helm] ]; then
-#  source <(helm completion zsh)
-#fi
 
 
