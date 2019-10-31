@@ -27,7 +27,7 @@ fi
 #fi
 
 # Amazon
-if [ $commands[toolbox] ]; then # toolbox was installed manually but should be installed
+if [[ $HOST == *"amazon"* ]]; then
   export PATH=$HOME/.toolbox/bin:$PATH
   export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_231.jdk/Contents/Home
 fi

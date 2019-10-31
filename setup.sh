@@ -5,7 +5,15 @@ ln -si .dotfiles/vim .vim;
 ln -si .dotfiles/vim/vimrc .vimrc;
 
 #git
-ln -si .dotfiles/git/gitconfig .gitconfig;
+if [[ $HOST == *"amazon"* ]];
+then
+  # Amazon
+  ln -si .dotfiles/git/gitconfig_amz .gitconfig;
+else
+  ln -si .dotfiles/git/gitconfig .gitconfig;
+
+fi
+
 git config --global core.excludesfile ~/.gitignore_global
 ln -si .dotfiles/git/gitignore_global .gitignore_global;
 
