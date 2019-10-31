@@ -5,11 +5,13 @@ ln -si .dotfiles/vim .vim;
 ln -si .dotfiles/vim/vimrc .vimrc;
 
 #git
-if [[ $HOST == *"amazon"* ]];
+if [[ $USER == "apoorvko" ]];
 then
   # Amazon
+  echo here
   ln -si .dotfiles/git/gitconfig_amz .gitconfig;
 else
+  echo there
   ln -si .dotfiles/git/gitconfig .gitconfig;
 
 fi
