@@ -29,6 +29,7 @@ fi
 
 
 source $ZSH/oh-my-zsh.sh
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Include Common
 if [ -f ~/.commonrc ]; then
@@ -37,9 +38,10 @@ fi
 
 ################ user config
 # AWS CLI
-source /usr/local/aws/bin/aws_zsh_completer.sh
-if [ $commands[aws] ]; then
-  source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# Amazon
+if [[ $USER == "apoorvko" ]]; then
+  if [ $commands[aws] ]; then
+    source /usr/local/aws/bin/aws_zsh_completer.sh
+  fi
 fi
-
 
