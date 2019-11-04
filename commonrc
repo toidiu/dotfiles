@@ -30,6 +30,7 @@ fi
 if [[ $USER == "apoorvko" ]]; then
   export PATH=$HOME/.toolbox/bin:$PATH
   export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_231.jdk/Contents/Home
+  export PATH=/usr/local/opt/node@8/bin:$PATH
 fi
 
 ################ alias
