@@ -2,5 +2,11 @@
 *.exe
 *.swp
 tags
-.idea
 TAGS
+
+# intellij
+.idea
+*.iml
+
+# Amazon
+build
