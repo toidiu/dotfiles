@@ -1,5 +1,20 @@
 export SBT_OPTS="-Xms512m -Xmx2G -XX:ReservedCodeCacheSize=256m -XX:MaxMetaspaceSize=2G -Dscala.color -XX:+UseG1GC -XX:+UnlockExperimentalVMOptions -XX:MaxGCPauseMillis=100 -XX:+DisableExplicitGC -XX:TargetSurvivorRatio=90 -XX:G1NewSizePercent=50 -XX:G1MaxNewSizePercent=80 -XX:InitiatingHeapOccupancyPercent=10 -XX:G1MixedGCLiveThresholdPercent=50 -XX:+AggressiveOpts -XX:+AlwaysPreTouch"
 
+## CUSTOM for Amazon Cloud Desktop
+alias brazil-octane='/apollo/env/OctaneBrazilTools/bin/brazil-octane'
+alias third-party-promote='~/.toolbox/bin/brazil-third-party-tool promote'
+alias third-party='~/.toolbox/bin/brazil-third-party-tool'
+alias vim='/apollo/env/envImprovement/bin/vim'
+alias ec2-ssh=/apollo/env/EC2SSHWrapper/bin/ec2-ssh
+export PATH="/apollo/env/AmazonAwsCli/bin/:$PATH"
+
+export PATH="/apollo/env/DevDesktop/bin:$PATH" # EC2MOO dev desktop
+export PATH="/apollo/env/envImprovement/bin:$PATH" #
+export PATH="/apollo/env/SDETools/bin:$PATH" # SDE TOOLS
+# solve openssl issue: https://sage.amazon.com/questions/169765#169826
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/apollo/env/SDETools/lib/
+
+
 ## Go
 if [ $commands[go] ]; then
   mkdir -p $HOME/project/go
