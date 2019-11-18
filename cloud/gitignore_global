@@ -1,0 +1,13 @@
+.DS_Store
+*.exe
+*.swp
+tags
+TAGS
+
+# intellij
+.idea
+*.iml
+
+# Amazon
+build
+

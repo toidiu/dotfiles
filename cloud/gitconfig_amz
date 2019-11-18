@@ -1,0 +1,9 @@
+# This is Git's per-user configuration file.
+[user]
+	name = Apoorv Kothari
+	email = apoorvko@amazon.com
+[alias]
+[push]
+	default = simple
+[core]
+	excludesfile = /home/apoorvko/.gitignore_global
