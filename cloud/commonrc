@@ -1,0 +1,95 @@
+export SBT_OPTS="-Xms512m -Xmx2G -XX:ReservedCodeCacheSize=256m -XX:MaxMetaspaceSize=2G -Dscala.color -XX:+UseG1GC -XX:+UnlockExperimentalVMOptions -XX:MaxGCPauseMillis=100 -XX:+DisableExplicitGC -XX:TargetSurvivorRatio=90 -XX:G1NewSizePercent=50 -XX:G1MaxNewSizePercent=80 -XX:InitiatingHeapOccupancyPercent=10 -XX:G1MixedGCLiveThresholdPercent=50 -XX:+AggressiveOpts -XX:+AlwaysPreTouch"
+
+## CUSTOM for Amazon Cloud Desktop
+alias brazil-octane='/apollo/env/OctaneBrazilTools/bin/brazil-octane'
+alias third-party-promote='~/.toolbox/bin/brazil-third-party-tool promote'
+alias third-party='~/.toolbox/bin/brazil-third-party-tool'
+alias vim='/apollo/env/envImprovement/bin/vim'
+alias ec2-ssh=/apollo/env/EC2SSHWrapper/bin/ec2-ssh
+export PATH="/apollo/env/AmazonAwsCli/bin/:$PATH"
+
+export PATH="/apollo/env/DevDesktop/bin:$PATH" # EC2MOO dev desktop
+export PATH="/apollo/env/envImprovement/bin:$PATH" #
+export PATH="/apollo/env/SDETools/bin:$PATH" # SDE TOOLS
+# solve openssl issue: https://sage.amazon.com/questions/169765#169826
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/apollo/env/SDETools/lib/
+
+
+## Go
+if [ $commands[go] ]; then
+  mkdir -p $HOME/project/go
+  export GOPATH=$HOME/project/go
+  export PATH=$PATH:$(go env GOPATH)/bin
+fi
+
+## Brew
+export HOMEBREW_NO_ANALYTICS=1
+
+# Rust
+if [ $commands[cargo] ]; then
+  source $HOME/.cargo/env
+fi
+
+#
+# Kube (slow!!)
+# if [ $commands[kubectl] ]; then
+#   source <(kubectl completion zsh)
+# fi
+
+# Helm
+#if [ $commands[helm] ]; then
+#  source <(helm completion zsh)
+#fi
+
+# Amazon
+if [[ $USER == "apoorvko" ]]; then
+  export PATH=$HOME/.toolbox/bin:$PATH
+  export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_231.jdk/Contents/Home
+fi
+
+################ alias
+### General
+alias l="ls -al"
+alias cc="clear"
+alias xx="exit"
+alias ..="cd ..;pwd;ls -a"
+alias pp="pwd"
+alias curltime="curl -w '----------------\ntime_namelookup:  %{time_namelookup}\ntime_connect:  %{time_connect}
+time_appconnect:  %{time_appconnect}\ntime_pretransfer:  %{time_pretransfer}\ntime_redirect:  %{time_redirect}
+time_starttransfer:  %{time_starttransfer}\n----------\ntime_total:  %{time_total}\n' -o /dev/null -s"
+
+
+### Application Aliases
+alias vi="vim"
+alias util-kube='kubectl get nodes --label-columns group | grep node | awk '\''{print $1}'\'' | xargs -I {} sh -c '\''echo {} ; kubectl describe node {} | grep Allocated -A 5 | grep -ve Event -ve Allocated -ve percent -ve -- ; echo '\'''
+
+### Tmux
+alias tm="tmux"
+alias tmn="tmux new -s"
+alias tma="tmux attach -t"
+alias tml="tmux ls"
+alias tmd="tmux kill-session -t"
+
+### K8s Aliases
+alias kb="kubectl"
+
+### GIT Aliases
+alias gs="git status"
+alias gcm="git commit -m"
+alias gca="git commit -am"
+alias gco="git checkout"
+alias gb="git branch"
+alias gbd="git branch -D "
+alias gbn="git checkout -b "
+alias ga="git add"
+alias gl="git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit"
+alias gitl="git log --color"
+alias gd="git diff --color"
+alias gp="git pull; git fetch --all --prune"
+alias gpp="git push origin HEAD"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/toidiu/project/gke-cluster/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/toidiu/project/gke-cluster/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/toidiu/project/gke-cluster/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/toidiu/project/gke-cluster/google-cloud-sdk/completion.zsh.inc'; fi
