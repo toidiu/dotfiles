@@ -1,23 +1,45 @@
-#common
-ln -si .dotfiles/commonrc .commonrc;
-
-ln -si .dotfiles/vim .vim;
-ln -si .dotfiles/vim/vimrc .vimrc;
-
-#git
-if [[ $USER == "apoorvko" ]];
-then
-  # Amazon
-  echo here
-  ln -si .dotfiles/git/gitconfig_amz .gitconfig;
-else
-  echo there
-  ln -si .dotfiles/git/gitconfig .gitconfig;
-
+if [[ $USER == "apoorvko" ]]; then
+  if [ -f ~/.is_cloud ]; then # amz cloud
+    echo "amz cloud"
+  else # amz
+    echo "amz"
+  fi
+else # home
+  echo "home"
 fi
 
+#common
+if [ $USER == "apoorvko" ] && [ -f ~/.is_cloud ]; then # amz cloud
+  ln -si .dotfiles/cloud/commonrc .commonrc;
+else # home
+  ln -si .dotfiles/commonrc .commonrc;
+fi
+
+ln -si .dotfiles/vim .vim;
+if [ $USER == "apoorvko" ] && [ -f ~/.is_cloud ]; then # amz cloud
+  ln -si .dotfiles/cloud/vimrc .vimrc;
+else # home
+  ln -si .dotfiles/vim/vimrc .vimrc;
+fi
+
+#git
+if [[ $USER == "apoorvko" ]]; then
+  if [ -f ~/.is_cloud ]; then
+    ln -si .dotfiles/cloud/gitconfig_amz .gitconfig;
+  else
+    ln -si .dotfiles/git/gitconfig_amz .gitconfig;
+  fi
+else
+  ln -si .dotfiles/git/gitconfig .gitconfig;
+fi
+
+#gitignore_global
 git config --global core.excludesfile ~/.gitignore_global
-ln -si .dotfiles/git/gitignore_global .gitignore_global;
+if [ $USER == "apoorvko" ] && [ -f ~/.is_cloud ]; then # amz cloud
+  ln -si .dotfiles/cloud/gitignore_global .gitignore_global;
+else # home
+  ln -si .dotfiles/git/gitignore_global .gitignore_global;
+fi
 
 #bash
 ln -si .dotfiles/bash/bashrc .bashrc;
@@ -25,10 +47,19 @@ ln -si .dotfiles/bash/bash_profile .bash_profile;
 ln -si .dotfiles/inputrc .inputrc;
 
 #zsh
-ln -si .dotfiles/zsh/zshrc .zshrc;
+if [ $USER == "apoorvko" ] && [ -f ~/.is_cloud ]; then # amz cloud
+  ln -si .dotfiles/cloud/zshrc .zshrc;
+else # home
+  ln -si .dotfiles/zsh/zshrc .zshrc;
+fi
 
 #tmux
-ln -si .dotfiles/tmux.conf .tmux.conf;
+if [ $USER == "apoorvko" ] && [ -f ~/.is_cloud ]; then # amz cloud
+  ln -si .dotfiles/cloud/tmux.conf .tmux.conf;
+else # home
+  ln -si .dotfiles/tmux.conf .tmux.conf;
+fi
 
 #ctags
 ln -si .dotfiles/ctags .ctags;
+
