@@ -1,7 +1,6 @@
 export SBT_OPTS="-Xms512m -Xmx2G -XX:ReservedCodeCacheSize=256m -XX:MaxMetaspaceSize=2G -Dscala.color -XX:+UseG1GC -XX:+UnlockExperimentalVMOptions -XX:MaxGCPauseMillis=100 -XX:+DisableExplicitGC -XX:TargetSurvivorRatio=90 -XX:G1NewSizePercent=50 -XX:G1MaxNewSizePercent=80 -XX:InitiatingHeapOccupancyPercent=10 -XX:G1MixedGCLiveThresholdPercent=50 -XX:+AggressiveOpts -XX:+AlwaysPreTouch"
 
 if [ -d ~/personal/bin ]; then
-  # Control will enter here if $DIRECTORY exists.
   export PATH=~/personal/bin:$PATH
 fi
 
