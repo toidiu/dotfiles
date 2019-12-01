@@ -37,6 +37,7 @@ if [[ $USER == "apoorvko" ]]; then
   export PATH=/usr/local/opt/node@8/bin:$PATH
   alias b="brazil"
   alias bb="brazil-build"
+  alias bbr="brazil-build release"
 fi
 
 ################ alias

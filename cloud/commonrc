@@ -45,6 +45,9 @@ fi
 if [[ $USER == "apoorvko" ]]; then
   export PATH=$HOME/.toolbox/bin:$PATH
   export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_231.jdk/Contents/Home
+  alias b="brazil"
+  alias bb="brazil-build"
+  alias bbr="brazil-build release"
 fi
 
 ################ alias
