@@ -7,7 +7,7 @@ TAGS
 # intellij
 .idea
 *.iml
+.rakeTasks
 
 # Amazon
 build
-
