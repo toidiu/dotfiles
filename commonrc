@@ -39,6 +39,7 @@ if [[ $USER == "apoorvko" ]]; then
   alias bb="brazil-build"
   alias bbr="brazil-build release"
   alias gitfix="ls | xargs -I % sh -c 'cd %; git remote remove backup; git remote rename origin up; git remote rename share origin'"
+  alias bsync="brazil ws --sync --md"
 fi
 
 ################ alias
