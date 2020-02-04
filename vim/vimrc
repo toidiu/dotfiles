@@ -237,8 +237,6 @@ highlight def link NERDTreeRO NERDTreeFile
 " ----------------------------------------------------------------------------
 " Other
 " ----------------------------------------------------------------------------
-set foldmethod=syntax
-set foldnestmax=2
 set tabstop=2 "Number of spaces that a <Tab> in the file counts for
 set shiftwidth=2 "Number of spaces to use for each step of (auto)indent
 set softtabstop=2 "Number of spaces that a <Tab> counts for while performing editing operations
