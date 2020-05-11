@@ -11,8 +11,12 @@ export PATH="/apollo/env/AmazonAwsCli/bin/:$PATH"
 export PATH="/apollo/env/DevDesktop/bin:$PATH" # EC2MOO dev desktop
 export PATH="/apollo/env/envImprovement/bin:$PATH" #
 export PATH="/apollo/env/SDETools/bin:$PATH" # SDE TOOLS
+export PATH="/apollo/env/apoorvko-moo-lm-andon/bin:$PATH" # SDE TOOLS
+
 # solve openssl issue: https://sage.amazon.com/questions/169765#169826
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/apollo/env/SDETools/lib/
+# export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/apollo/env/SDETools/lib/
+# but this causes mwinit and kinit to fail :(
+export LD_LIBRARY_PATH=
 
 
 ## Go
