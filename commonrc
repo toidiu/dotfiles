@@ -4,6 +4,15 @@ if [ -d ~/personal/bin ]; then
   export PATH=~/personal/bin:$PATH
 fi
 
+# Android
+if [ -d ~/personal/bin/platform-tools ]; then
+  export PATH=~/personal/bin/platform-tools:$PATH
+fi
+if [ -d ~/personal/bin/flutter ]; then
+  export PATH=~/personal/bin/flutter/bin:$PATH
+fi
+
+
 ## Go
 if [ $commands[go] ]; then
   mkdir -p $HOME/project/go
