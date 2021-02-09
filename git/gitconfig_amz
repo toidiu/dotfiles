@@ -7,3 +7,7 @@
 	default = simple
 [core]
 	excludesfile = /Users/apoorvko/.gitignore_global
+[pull]
+	rebase = true
+[amazon]
+	append-cr-url = true
