@@ -52,7 +52,7 @@ noremap b <C-%>
 call plug#begin('~/.vim/plugged')
 
 " FZF
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
 " Solarized
@@ -105,6 +105,8 @@ Plug 'posva/vim-vue'
 " vim-toml
 Plug 'cespare/vim-toml'
 
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
 call plug#end()
 
 
@@ -132,15 +134,20 @@ call arpeggio#map('n', '', 0, 'jk', ':VimuxRunLastCommand<CR>')
 "endfunction
 "command! ProjectFiles execute 'Files' s:find_git_root()
 " gitignore
-let $FZF_DEFAULT_COMMAND = 'rg --files'
+" let $FZF_DEFAULT_COMMAND = 'rg --files'
 " FZF (replaces Ctrl-P, FuzzyFinder and Command-T)
-set rtp+=/usr/local/opt/fzf
-set rtp+=~/.fzf
+" set rtp+=/usr/local/opt/fzf
+" set rtp+=~/.fzf
 nmap ; :Buffers<CR>
 nmap <Leader>t :Tags<CR>
 nmap <Leader>d :call fzf#vim#tags("'" . expand('<cword>'))<CR>
-"nmap <Leader>t :ProjectFiles<CR>
 nmap <Leader>f :Files<CR>
+nmap <Leader>r :Rg<CR>
+
+let g:fzf_preview_window = ['right:40%:hidden', 'ctrl-/']
+let g:fzf_layout = { 'down' : '40%' }
+
+"nmap <Leader>t :ProjectFiles<CR>
 " Similarly, we can apply it to fzf#vim#grep. To use ripgrep instead of ag:
 " command! -bang -nargs=* Rg
 "   \ call fzf#vim#grep(
@@ -148,7 +155,6 @@ nmap <Leader>f :Files<CR>
 "   \   <bang>0 ? fzf#vim#with_preview('up:60%')
 "   \           : fzf#vim#with_preview('right:50%:hidden', '?'),
 "   \   <bang>0)
-nmap <Leader>r :Rg<CR>
 
 " ALE
 " let g:ale_sign_warning = '▲'
