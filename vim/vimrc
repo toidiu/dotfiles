@@ -155,6 +155,8 @@ let g:fzf_layout = { 'down' : '40%' }
 "   \   <bang>0 ? fzf#vim#with_preview('up:60%')
 "   \           : fzf#vim#with_preview('right:50%:hidden', '?'),
 "   \   <bang>0)
+nmap <Leader>r :Rg<CR>
+let g:fzf_layout = { 'down': '40%' }
 
 " ALE
 " let g:ale_sign_warning = '▲'
