@@ -58,6 +58,10 @@ time_starttransfer:  %{time_starttransfer}\n----------\ntime_total:  %{time_tota
 alias vi="vim"
 alias util-kube='kubectl get nodes --label-columns group | grep node | awk '\''{print $1}'\'' | xargs -I {} sh -c '\''echo {} ; kubectl describe node {} | grep Allocated -A 5 | grep -ve Event -ve Allocated -ve percent -ve -- ; echo '\'''
 
+### Rust Aliases
+alias cf="cargo +nightly fmt"
+alias cw="cargo watch"
+
 ### Tmux
 alias tm="tmux"
 alias tmn="tmux new -s"

@@ -12,3 +12,11 @@ ihr
 postgres
 prometheus
 stg
+ietf
+QUIC
+quic
+txt
+awslabs
+s2n
+alpn
+bool
