@@ -19,6 +19,9 @@ if [ -d ~/.cargo ]; then
   source $HOME/.cargo/env
 fi
 
+# gpg
+export GPG_TTY=$(tty)
+
 #
 # Kube (slow!!)
 # if [ $commands[kubectl] ]; then
