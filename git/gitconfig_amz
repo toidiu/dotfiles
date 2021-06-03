@@ -1,7 +1,8 @@
 # This is Git's per-user configuration file.
 [user]
-	name = Apoorv Kothari
-	email = apoorvko@amazon.com
+	name = toidiu
+	email = apoorv@toidiu.com
+	signingkey = 030C8D8D8ED23FB8
 [alias]
 [push]
 	default = simple
@@ -11,3 +12,5 @@
 	rebase = true
 [amazon]
 	append-cr-url = true
+[commit]
+	gpgsign = true

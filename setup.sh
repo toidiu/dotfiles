@@ -21,15 +21,21 @@ else # home
 fi
 
 #git
-if [[ $USER == "apoorvko" ]]; then
-  if [ -f ~/.is_cloud ]; then
-    ln -si .dotfiles/cloud/gitconfig_amz .gitconfig;
-  else
-    ln -si .dotfiles/git/gitconfig_amz .gitconfig;
-  fi
+if [ -f ~/.is_cloud ]; then
+  ln -si .dotfiles/cloud/gitconfig_amz .gitconfig;
 else
   ln -si .dotfiles/git/gitconfig .gitconfig;
 fi
+
+# if [[ $USER == "apoorvko" ]]; then
+#   if [ -f ~/.is_cloud ]; then
+#     ln -si .dotfiles/cloud/gitconfig_amz .gitconfig;
+#   else
+#     ln -si .dotfiles/git/gitconfig_amz .gitconfig;
+#   fi
+# else
+#   ln -si .dotfiles/git/gitconfig .gitconfig;
+# fi
 
 #gitignore_global
 git config --global core.excludesfile ~/.gitignore_global
