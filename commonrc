@@ -7,7 +7,7 @@ fi
 ## Go
 if [ $commands[go] ]; then
   mkdir -p $HOME/project/go
-  export GOPATH=$HOME/project/go
+  export GOPATH=$HOME/projects/go
   export PATH=$PATH:$(go env GOPATH)/bin
 fi
 
