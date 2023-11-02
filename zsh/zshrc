@@ -16,7 +16,12 @@ DEFAULT_USER=$USER
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 
-plugins=(git cargo sbt docker)
+plugins=(
+  git
+  rust
+  docker
+  pass
+)
 
 if [ $commands[kubectl] ]; then
 function rprompt() {
@@ -29,7 +34,10 @@ fi
 
 
 source $ZSH/oh-my-zsh.sh
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# linux
+# source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# mac
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Include Common
 if [ -f ~/.commonrc ]; then
