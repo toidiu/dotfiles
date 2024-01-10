@@ -26,6 +26,14 @@ nmap \w :setlocal invspell<CR>
 " switch between last file
 nmap <C-e> :e#<CR>
 
+" File opts --------
+imap <C-s> <Esc>:w<CR>
+nmap <C-s> :w<CR>
+imap <C-d> <Esc>:q<CR>
+nmap <C-d> :q<CR>
+imap <C-z> <Esc><Undo>a
+nmap <C-z> <Undo>
+
 " Move between open buffers.
 "nmap <C-n> :bnext<CR>
 "nmap <C-p> :bprev<CR>
@@ -141,8 +149,11 @@ set rtp+=~/.fzf
 nmap ; :Buffers<CR>
 nmap <Leader>t :Tags<CR>
 nmap <Leader>d :call fzf#vim#tags("'" . expand('<cword>'))<CR>
-nmap <Leader>f :Files<CR>
-nmap <Leader>r :Rg<CR>
+
+nnoremap <Leader>q :bd<CR>
+nnoremap <silent> <C-a> :Rg<CR>
+nnoremap <silent> <C-p> :Files<CR>
+nmap ; :Buffers<CR>
 
 let g:fzf_preview_window = ['right:40%', 'ctrl-/']
 let g:fzf_layout = { 'down' : '40%' }
