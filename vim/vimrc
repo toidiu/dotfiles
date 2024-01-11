@@ -2,8 +2,8 @@ set nocompatible
 
 
 " For any plugins that use this, make their keymappings use comma
-let mapleader = ","
-let maplocalleader = ","
+" let mapleader = ","
+" let maplocalleader = ","
 
 " Userful macros
 nmap \v :vsplit<CR>
