@@ -7,7 +7,7 @@
 [push]
 	default = simple
 [core]
-	excludesfile = /Users/apoorvko/.gitignore_global
+	excludesfile = /home/apoorvko/.gitignore_global
 [pull]
 	rebase = true
 [amazon]

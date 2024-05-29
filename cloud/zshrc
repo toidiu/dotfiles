@@ -43,3 +43,10 @@ if [ $commands[aws] ]; then
 fi
 
 
+
+# if you wish to use IMDS set AWS_EC2_METADATA_DISABLED=false
+
+export AWS_EC2_METADATA_DISABLED=true
+
+
+export PATH=$PATH:/usr/local/go/bin

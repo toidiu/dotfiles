@@ -2,8 +2,8 @@ set nocompatible
 
 
 " For any plugins that use this, make their keymappings use comma
-let mapleader = ","
-let maplocalleader = ","
+" let mapleader = ","
+" let maplocalleader = ","
 
 " Userful macros
 nmap \v :vsplit<CR>
@@ -25,6 +25,14 @@ nmap \w :setlocal invspell<CR>
 " Buffers --------
 " switch between last file
 nmap <C-e> :e#<CR>
+
+" File opts --------
+imap <C-s> <Esc>:w<CR>
+nmap <C-s> :w<CR>
+imap <C-d> <Esc>:q<CR>
+nmap <C-d> :q<CR>
+imap <C-z> <Esc><Undo>a
+nmap <C-z> <Undo>
 
 " Move between open buffers.
 "nmap <C-n> :bnext<CR>
@@ -126,8 +134,6 @@ autocmd FileType sql setlocal commentstring=--\ %s
 
 
 " FZF
-let g:fzf_preview_window = ['right:40%:hidden', 'ctrl-/']
-let g:fzf_layout = { 'down' : '40%' }
 ""git as a project dir
 "function! s:find_git_root()
 "  return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
@@ -141,8 +147,15 @@ set rtp+=~/.fzf
 nmap ; :Buffers<CR>
 nmap <Leader>t :Tags<CR>
 nmap <Leader>d :call fzf#vim#tags("'" . expand('<cword>'))<CR>
-"nmap <Leader>t :ProjectFiles<CR>
-nmap <Leader>f :Files<CR>
+
+nnoremap <Leader>q :bd<CR>
+nnoremap <silent> <C-a> :Rg<CR>
+nnoremap <silent> <C-p> :Files<CR>
+nmap ; :Buffers<CR>
+
+let g:fzf_preview_window = ['right:40%', 'ctrl-/']
+let g:fzf_layout = { 'down' : '40%' }
+
 " Similarly, we can apply it to fzf#vim#grep. To use ripgrep instead of ag:
 " command! -bang -nargs=* Rg
 "   \ call fzf#vim#grep(
