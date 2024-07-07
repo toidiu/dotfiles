@@ -50,10 +50,11 @@ fi
 
 ################ user config
 # AWS CLI
-# Amazon
-if [[ $USER == "apoorvko" ]]; then
-  if [ $commands[aws] ]; then
-    source /usr/local/aws/bin/aws_zsh_completer.sh
-  fi
-fi
+# # Amazon
+# if [[ $USER == "apoorvko" ]]; then
+#   if [ $commands[aws] ]; then
+#     source /usr/local/aws/bin/aws_zsh_completer.sh
+#   fi
+# fi
+complete -C '/usr/local/aws/bin/aws_completer' aws
 

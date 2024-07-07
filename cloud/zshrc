@@ -18,7 +18,7 @@ DEFAULT_USER=$USER
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 
-plugins=(git cargo sbt docker)
+plugins=(git cargo docker)
 
 # if [ $commands[kubectl] ]; then
 # function rprompt() {

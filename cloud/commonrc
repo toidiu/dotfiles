@@ -1,5 +1,3 @@
-export SBT_OPTS="-Xms512m -Xmx2G -XX:ReservedCodeCacheSize=256m -XX:MaxMetaspaceSize=2G -Dscala.color -XX:+UseG1GC -XX:+UnlockExperimentalVMOptions -XX:MaxGCPauseMillis=100 -XX:+DisableExplicitGC -XX:TargetSurvivorRatio=90 -XX:G1NewSizePercent=50 -XX:G1MaxNewSizePercent=80 -XX:InitiatingHeapOccupancyPercent=10 -XX:G1MixedGCLiveThresholdPercent=50 -XX:+AggressiveOpts -XX:+AlwaysPreTouch"
-
 ## CUSTOM for Amazon Cloud Desktop
 alias brazil-octane='/apollo/env/OctaneBrazilTools/bin/brazil-octane'
 alias third-party-promote='~/.toolbox/bin/brazil-third-party-tool promote'
@@ -17,14 +15,6 @@ export PATH="/apollo/env/apoorvko-moo-lm-andon/bin:$PATH" # SDE TOOLS
 # export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/apollo/env/SDETools/lib/
 # but this causes mwinit and kinit to fail :(
 export LD_LIBRARY_PATH=
-
-
-## Go
-if [ $commands[go] ]; then
-  mkdir -p $HOME/project/go
-  export GOPATH=$HOME/project/go
-  export PATH=$PATH:$(go env GOPATH)/bin
-fi
 
 ## Brew
 export HOMEBREW_NO_ANALYTICS=1
