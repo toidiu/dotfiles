@@ -58,8 +58,7 @@ time_starttransfer:  %{time_starttransfer}\n----------\ntime_total:  %{time_tota
 
 
 ### Application Aliases
-alias vi="nvim"
-alias vim="nvim"
+alias vi="vim"
 alias util-kube='kubectl get nodes --label-columns group | grep node | awk '\''{print $1}'\'' | xargs -I {} sh -c '\''echo {} ; kubectl describe node {} | grep Allocated -A 5 | grep -ve Event -ve Allocated -ve percent -ve -- ; echo '\'''
 
 ### Rust Aliases
