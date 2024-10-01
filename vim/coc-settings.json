@@ -1,0 +1,9 @@
+{
+  "languageserver": {
+    "clangd": {
+      "command": "clangd",
+      "rootPatterns": [ "CMakeLists.txt" ],
+      "filetypes": [ "c", "cc", "cpp", "c++" ]
+    }
+  }
+}

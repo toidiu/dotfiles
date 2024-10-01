@@ -14,7 +14,6 @@ nmap \e :<C-U>call ToggleNerdTree()<CR>
 "nmap \g :Gstatus<CR>
 nmap \p :set paste!<CR>:set paste?<CR>
 nmap \h :nohlsearch<CR>
-nmap \f mt:Goyo<CR>'tzz
 "nmap \i vip:sort<CR>
 
 " Spelling ------
@@ -89,9 +88,6 @@ Plug 'airblade/vim-gitgutter'
 " fugitive
 Plug 'tpope/vim-fugitive'
 
-" Goyo
-Plug 'junegunn/goyo.vim'
-
 " Commentary
 Plug 'tpope/vim-commentary'
 
@@ -124,7 +120,7 @@ call plug#end()
 filetype plugin indent on
 
 " make vim-vue faster (syntax)
-let g:vue_disable_pre_processors = 1
+" let g:vue_disable_pre_processors = 1
 
 " commentaty
 autocmd FileType sql setlocal commentstring=--\ %s
@@ -202,14 +198,10 @@ map <Leader>vc :VimuxPromptCommand<CR>
 " Run last command executed by VimuxRunCommand
 map <Leader>vv :VimuxRunLastCommand<CR>
 
-" GOYO
-let g:goyo_width = "120"
-let g:goyo_heith = "80%"
-
 " Supertab
 "runtime syntax/colortest.vim
-highlight Pmenu ctermbg=lightred gui=bold
-highlight PmenuSel ctermbg=white
+" highlight Pmenu ctermbg=lightred gui=bold
+" highlight PmenuSel ctermbg=white
 
 " Custom colors for NERDTree
 highlight def link NERDTreeRO NERDTreeFile
