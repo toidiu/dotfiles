@@ -1,9 +1,28 @@
 {
+  "coc.preferences.formatOnSaveFiletypes": ["rust"],
+
   "languageserver": {
     "clangd": {
       "command": "clangd",
       "rootPatterns": [ "CMakeLists.txt" ],
       "filetypes": [ "c", "cc", "cpp", "c++" ]
+    },
+    "lua": {}
+  },
+  "rust-analyzer": {
+    "check.overrideCommand": "cargo +nightly clippy --workspace --message-format=json --all-targets",
+    "inlayHints": {
+      "chainingHints": "true",
+      "parameterHints": "true",
+      "typeHints": "false"
+    },
+    "lens": {
+      "implementations.enable": "false",
+      "debug.enable": "false",
+      "run.enable": "false"
+    },
+    "procMacro": {
+      "enable": "true"
     }
   },
   "inlayHint.enable": "false"
