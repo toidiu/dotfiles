@@ -70,12 +70,6 @@ Plug 'chriskempson/base16-vim'
 " Supertab
 Plug 'ervandew/supertab'
 
-" VIMUX
-Plug 'benmills/vimux'
-
-" ALE
-" Plug 'w0rp/ale'
-
 " Lightline
 "Plug 'itchyny/lightline.vim'
 
@@ -100,12 +94,6 @@ Plug 'tpope/vim-repeat'
 " Vim Tmux Navigation
 Plug 'christoomey/vim-tmux-navigator'
 
-" arpeggio (chords)
-Plug 'kana/vim-arpeggio'
-
-" vim-vue (syntax)
-Plug 'posva/vim-vue'
-
 " vim-toml
 Plug 'cespare/vim-toml'
 
@@ -120,16 +108,8 @@ call plug#end()
 " SYNTAX - faster syntax highlighting than polygot
 filetype plugin indent on
 
-" make vim-vue faster (syntax)
-" let g:vue_disable_pre_processors = 1
-
 " commentaty
 autocmd FileType sql setlocal commentstring=--\ %s
-
-" arpeggio
-call arpeggio#map('n', '', 0, 'jk', ':VimuxRunLastCommand<CR>')
-
-
 
 
 " FZF
@@ -185,20 +165,6 @@ nmap <silent> gh :call CocActionAsync('doHover')<CR>
 nmap <silent> gs :CocFzfList symbols<CR>
 nmap <silent> ge :CocFzfList diagnostics<CR>
 
-" ALE ----------
-" let g:ale_sign_warning = '▲'
-" let g:ale_sign_error = '✗'
-" highlight link ALEWarningSign String
-" highlight link ALEErrorSign Title
-" let g:ale_linters = {'rust': ['rls']}
-" let g:ale_rust_cargo_use_check = 1
-
-" VIMUX
-" Prompt for a command to run
-map <Leader>vc :VimuxPromptCommand<CR>
-" Run last command executed by VimuxRunCommand
-map <Leader>vv :VimuxRunLastCommand<CR>
-
 " Supertab
 "runtime syntax/colortest.vim
 " highlight Pmenu ctermbg=lightred gui=bold
@@ -231,7 +197,6 @@ set listchars=tab:>-,trail:~,extends:>,precedes:<
 set list "Show tabs as CTRL-I is displayed, display $ after end of line
 "set visualbell t_vb=        " No flashing or beeping at all
 
-"asdfasdfasdf
 "filetype plugin indent on
 
 "=== The ":syntax enable" command will keep your current color settings.  This
