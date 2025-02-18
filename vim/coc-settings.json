@@ -10,6 +10,7 @@
     "lua": {}
   },
   "rust-analyzer": {
+    "updates.checkOnStartup": "true",
     "check.overrideCommand": "cargo +nightly clippy --workspace --message-format=json --all-targets",
     "inlayHints": {
       "chainingHints": "true",
@@ -25,5 +26,12 @@
       "enable": "true"
     }
   },
+    "suggest.floatConfig": {
+      "maxWidth": 50,
+      "border": true,
+      "rounded": true,
+      "highlight": "CocCustomPopup",
+      "borderhighlight": "CocCustomPopupBorder"
+    },
   "inlayHint.enable": "false"
 }

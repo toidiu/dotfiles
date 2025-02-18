@@ -167,8 +167,6 @@ nmap <silent> ge :CocFzfList diagnostics<CR>
 
 " Supertab
 "runtime syntax/colortest.vim
-" highlight Pmenu ctermbg=lightred gui=bold
-" highlight PmenuSel ctermbg=white
 
 " Custom colors for NERDTree
 highlight def link NERDTreeRO NERDTreeFile
@@ -214,12 +212,18 @@ set hls "highlight search options
 set incsearch "While typing show incremental search
 set ic "default to case-insensitive search
 set smartcase "allow case-sensitive search if there is one uppercase
-hi Search guibg=peru guifg=wheat
+" hi Search guibg=peru guifg=wheat
 
 set cursorline "highlight current line
 hi CursorLine ctermbg=NONE cterm=underline "no color, just underline
 set wildmode=longest,list "on tab filename complete, first tab produces longest. Second tab produces list.
 
+hi Pmenu ctermbg=lightred gui=bold
+hi PmenuSel ctermbg=yellow
+hi clear SignColumn
+hi CocFloating ctermbg=Black     " Floating menu bg color
+hi CocMenuSel ctermbg=Blue       " Menu selection bg color
+hi CocSearch ctermfg=Cyan        " Text color of the matching text
 
 
 set backspace=indent,eol,start "allow backspacing over indent, eol, start
@@ -257,6 +261,10 @@ augroup END
 "set autochdir " Automatically change current working directory to most recent file
 
 
+" allow for undo across buffer changes
+"
+" buffer of the old file will only be hidden when switching to new file.
+set hidden
 
 
 " ----------------------------------------------------------------------------
