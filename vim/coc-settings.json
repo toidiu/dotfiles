@@ -17,6 +17,7 @@
       "parameterHints": "true",
       "typeHints": "false"
     },
+    "rustfmt.overrideCommand": "cargo +nightly fmt --all",
     "lens": {
       "implementations.enable": "false",
       "debug.enable": "false",
