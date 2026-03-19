@@ -8,6 +8,10 @@ export HOMEBREW_NO_ANALYTICS=1
 # gpg
 export GPG_TTY=$(tty)
 
+# sccache
+export SCCACHE_CACHE_SIZE=20G
+export SCCACHE_DIR=~/.cache/sccache
+
 ################ alias
 ### General
 alias l="ls -al"
@@ -18,9 +22,8 @@ alias curltime="curl -w '----------------\ntime_namelookup:  %{time_namelookup}\
 time_appconnect:  %{time_appconnect}\ntime_pretransfer:  %{time_pretransfer}\ntime_redirect:  %{time_redirect}
 time_starttransfer:  %{time_starttransfer}\n----------\ntime_total:  %{time_total}\n' -o /dev/null -s"
 
-
-### Application Aliases
-alias vi="vim"
+### Opencode
+alias ak-opencode-bootstrap="opencode auth login https://opencode.cloudflare.dev && opencode mcp logout cf-portal && opencode mcp auth cf-portal && brew upgrade opencode"
 
 ### Tmux
 alias tm="tmux"
@@ -34,6 +37,7 @@ alias tmk="tmux kill-session -t"
 alias gs="git status"
 alias gcm="git commit -m"
 alias gca="git commit -am"
+alias gcf="git commit -a --amend"
 alias gco="git checkout"
 alias gb="git branch"
 alias gbd="git branch -D "
@@ -44,6 +48,23 @@ alias gitl="git log --color"
 alias gd="git diff --color"
 alias gp="git pull; git fetch --all --prune"
 alias gpp="git push origin HEAD"
+
+# grep
+function psgrep() {
+  echo "grep for: --- $1 ---"
+  ps aux | grep $1 | grep -v grep
+}
+# opencode
+function ak-openvoice() {
+  local port
+  # Generate a random port in the user port range (1025-65535)
+  port=$(( (RANDOM % 64511) + 3333 ))
+  echo "New session on port: $port"
+
+  tmux split-window -v "echo 'opencode server: http://127.0.0.1:${port}/\n'; opencode-voice --no-push-to-talk --port $port";
+  opencode --port $port;
+  echo "done"
+}
 
 ## NVM
 export NVM_DIR="$HOME/.nvm"
