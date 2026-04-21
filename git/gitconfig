@@ -1,3 +1,6 @@
+# Separate configs for github and gitlab
+# https://www.ajfriesen.com/separating-git-config-for-several-git-servers/
+#
 # This is Git's per-user configuration file.
 [user]
 	name = Apoorv Kothari

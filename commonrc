@@ -5,8 +5,22 @@ export HOMEBREW_NO_ANALYTICS=1
 # source $HOME/.cargo/env
 . "$HOME/.cargo/env"
 
+# GO
+export GOPATH="$HOME/go"
+export PATH="$HOME/go/bin:$PATH"
+
+# psql
+export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+
 # gpg
 export GPG_TTY=$(tty)
+
+# git
+export PATH="$HOME/projects/git-prune-local/target/release:$PATH"
+
+# jj
+export JJ_CONFIG="~/.config/jj/config.toml"
+
 
 # sccache
 export SCCACHE_CACHE_SIZE=20G
@@ -37,7 +51,7 @@ alias tmk="tmux kill-session -t"
 alias gs="git status"
 alias gcm="git commit -m"
 alias gca="git commit -am"
-alias gcf="git commit -a --amend"
+alias gcf="git commit -a --amend --no-edit"
 alias gco="git checkout"
 alias gb="git branch"
 alias gbd="git branch -D "
@@ -48,6 +62,13 @@ alias gitl="git log --color"
 alias gd="git diff --color"
 alias gp="git pull; git fetch --all --prune"
 alias gpp="git push origin HEAD"
+
+### JJ Aliases
+alias jn="jj new "
+alias je="jj edit "
+alias jd="jj describe "
+alias jb="jj bookmark "
+alias jf="jj git fetch "
 
 # grep
 function psgrep() {
@@ -61,7 +82,7 @@ function ak-openvoice() {
   port=$(( (RANDOM % 64511) + 3333 ))
   echo "New session on port: $port"
 
-  tmux split-window -v "echo 'opencode server: http://127.0.0.1:${port}/\n'; opencode-voice --no-push-to-talk --port $port";
+  tmux split-window -v "echo 'opencode server: http://127.0.0.1:${port}/\n'; opencode-voice --port $port";
   opencode --port $port;
   echo "done"
 }

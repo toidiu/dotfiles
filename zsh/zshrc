@@ -16,6 +16,9 @@ plugins=(
   pass
 )
 
+## git-prune-local
+zstyle ':completion:*:*:git:*' user-commands prune-local:'prune local branches for which remote ones have been deleted.'
+
 source $ZSH/oh-my-zsh.sh
 # linux
 # source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -31,9 +34,16 @@ fi
 
 # Orange
 source ~/.dotfiles/zsh/cf_completion
+export PATH="/opt/homebrew/opt/curl/bin:$PATH"
 
 ## NVM
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+
+. "$HOME/.local/bin/env"
+
+# Added by Windsurf
+export PATH="/Users/akothari/.codeium/windsurf/bin:$PATH"
+source ~/.bashrc

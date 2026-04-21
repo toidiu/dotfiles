@@ -1,5 +1,5 @@
 {
-  "coc.preferences.formatOnSaveFiletypes": ["rust"],
+  "_coc.preferences.formatOnSaveFiletypes": ["rust"],
 
   "languageserver": {
     "clangd": {
@@ -8,24 +8,6 @@
       "filetypes": [ "c", "cc", "cpp", "c++" ]
     },
     "lua": {}
-  },
-  "rust-analyzer": {
-    "updates.checkOnStartup": "true",
-    "check.overrideCommand": "cargo +nightly clippy --workspace --message-format=json --all-targets",
-    "inlayHints": {
-      "chainingHints": "true",
-      "parameterHints": "true",
-      "typeHints": "false"
-    },
-    "rustfmt.overrideCommand": "cargo +nightly fmt --all",
-    "lens": {
-      "implementations.enable": "false",
-      "debug.enable": "false",
-      "run.enable": "false"
-    },
-    "procMacro": {
-      "enable": "true"
-    }
   },
     "suggest.floatConfig": {
       "maxWidth": 50,
