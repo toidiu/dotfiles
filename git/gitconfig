@@ -4,18 +4,16 @@
 # This is Git's per-user configuration file.
 [user]
 	name = Apoorv Kothari
-	email = akothari@cloudflare.com
+	email = apoorv@toidiu.com
 	signingkey = 0D89E2E3316323F595D9BE272208497DD006F3E9
 [alias]
 [push]
 	default = simple
 [core]
-	excludesfile = /Users/akothari/.gitignore_global
+	excludesfile = /home/toidiu/.gitignore_global
 [pull]
 	rebase = true
 [amazon]
 	append-cr-url = true
 [commit]
 	gpgsign = true
-[include]
-	path = /Users/akothari/.local/share/cloudflare-warp-certs/gitconfig
