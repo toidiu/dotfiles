@@ -2,6 +2,9 @@
 # so as not the show the hostname
 DEFAULT_USER=$USER
 
+# share history across all sessions
+setopt share_history
+
 # Set up the Starship prompt
 eval "$(starship init zsh)"
 

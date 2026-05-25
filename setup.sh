@@ -26,3 +26,5 @@ ln -si .dotfiles/tmux.conf .tmux.conf;
 #ctags
 ln -si .dotfiles/ctags .ctags;
 
+#alacritty
+ln -si ~/.dotfiles/alacritty.toml ~/.config/alacritty/alacritty.toml;
