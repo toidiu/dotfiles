@@ -7,7 +7,11 @@ x = 10
 y = 10
 
 [font]
-size = 10.0
+size = 12.0
+
+[font.normal]
+family = "Inconsolata"
+style = "Regular"
 
 [colors.primary]
 background = "#272822"
