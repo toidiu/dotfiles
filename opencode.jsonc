@@ -1,0 +1,42 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "default_agent": "plan",
+  "lsp": true,
+  "agent": {
+    "build": {
+      "prompt": "When you need to read multiple files, delegate the work to a general subagent via the task tool instead of reading them yourself. Use subagents for parallel file reads.",
+      "permission": {
+        "read": "allow",
+        "edit": "ask",
+        "glob": "ask",
+        "grep": "ask",
+        "list": "ask",
+        "bash": {
+          "rg *": "allow",
+          "git *": "allow",
+          "npm *": "ask",
+          "pnpm *": "ask",
+          "cargo *": "ask",
+          "docker *": "ask",
+          "npx *": "ask",
+          "pip *": "ask",
+          "make *": "ask",
+          "node *": "ask",
+          "python*": "ask",
+          "rustup *": "ask",
+          "curl *": "ask",
+          "wget *": "ask",
+          "*": "ask"
+        },
+        "task": "ask",
+        "external_directory": "ask",
+        "todowrite": "ask",
+        "question": "ask",
+        "webfetch": "ask",
+        "websearch": "ask",
+        "lsp": "allow",
+        "skill": "ask"
+      }
+    }
+  }
+}

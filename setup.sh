@@ -28,3 +28,6 @@ ln -si .dotfiles/ctags .ctags;
 
 #alacritty
 ln -si ~/.dotfiles/alacritty.toml ~/.config/alacritty/alacritty.toml;
+
+# opencode
+ln -si ~/.dotfiles/opencode.jsonc ~/.config/opencode/opencode.jsonc;
