@@ -82,6 +82,9 @@ function ak-updated-debian() {
   npm outdated -g --depth=0
   npm update -g
 
+  pnpm outdated -g --depth=0
+  pnpm update -g
+
   echo "cargo"
   cargo install --list
   for crate in $(cargo install --list | egrep '^[a-z0-9_-]+ v[0-9.]+:$' | cut -f1 -d' '); do cargo install --locked $crate; done

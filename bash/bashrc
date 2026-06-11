@@ -61,6 +61,6 @@ export PATH="/usr/local/opt/ruby/bin:$PATH"
 
 
 
-. "$HOME/.local/bin/env"
+# . "$HOME/.local/bin/env"
 source /Users/akothari/.config/cloudflare/vault-funcs
 . /Users/akothari/.local/share/cloudflare-warp-certs/config.sh
