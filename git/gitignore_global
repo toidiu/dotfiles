@@ -15,9 +15,10 @@ build
 *local_akothari*
 *local_toidiu*
 
-bacon.toml
 keylog
 
 # AI
 ai_sess*
 
+
+**/.claude/settings.local.json

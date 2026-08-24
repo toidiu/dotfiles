@@ -95,6 +95,11 @@ function ak-updated-debian() {
   echo "apt"
   sudo apt update
   sudo apt upgrade
+
+  # llama.cpp
+  # https://gist.github.com/ckastner/d46ed1978ee76dc45d5a9e911cb5e7ca/2685e64a7813004a36c1f4e65c86f3aec64cbd86
+  # sudo apt-get install llama.cpp
+  # sudo apt install libggml0-backend-vulkan
 }
 
 ### Opencode

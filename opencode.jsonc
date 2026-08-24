@@ -1,10 +1,23 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "default_agent": "plan",
+  "provider": {
+    "llamacpp": {
+      "name": "llamacpp",
+      "options": {
+        "baseURL": "http://127.0.0.1:8080"
+      },
+      "models": {
+        "qwen3-4b": {
+          "name": "qwen3-4b"
+        }
+      }
+    }
+  },
   "permission": {
     "todowrite": "deny"
   },
   "lsp": true,
+  "default_agent": "plan",
   "agent": {
     "build": {
       "prompt": "When you need to read multiple files, delegate the work to a general subagent via the task tool instead of reading them yourself. Use subagents for parallel file reads.",
@@ -19,6 +32,7 @@
           "git *": "allow",
           "npm *": "ask",
           "pnpm *": "ask",
+          "pnpm build*": "allow",
           "cargo *": "ask",
           "docker *": "ask",
           "npx *": "ask",
