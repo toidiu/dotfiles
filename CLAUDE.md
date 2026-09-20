@@ -1,89 +1,75 @@
-# Brevity comes first
+# Global instructions
 
-This overrides everything below. When a rule here conflicts with being
-brief, brevity wins.
+## Brevity
 
-- Short by default. If the answer fits in one line, it is one line.
-- Cut every sentence that carries no new information. Do not restate the
-  question, do not narrate what you are about to do, do not summarise
-  what you just did unless I asked.
-- No preamble, no sign-off, no "great question", no recap of my own
-  instruction back to me.
-- Do not list what you did file by file unless I ask. One line on the
-  outcome is enough.
-- Do not explain a decision I already agreed to.
-- Do not offer alternatives I did not ask about.
-- Prefer a plain sentence over a bulleted list. Prefer a short list over
-  a long one. Headings only when the reply has genuinely separate parts.
-- If I say you are being verbose, cut the length of your next replies by
-  half and keep them there.
+Brevity overrides every other rule, in chat and in anything written to a file.
 
-The same applies to anything you write into a file. Comments, docs,
-checklists and commit messages are all held to it: a statement earns its
-place by changing what a reader would do.
+- If the answer fits in one line, use one line.
+- Cut any sentence or phrase that adds no new information.
+- Start with the answer: no preamble, framing header, restated question, or narration of what you will do.
+- End without a sign-off or a summary of what you did; one line on the outcome, no file-by-file list unless asked.
+- Do not repeat a previous reply or explain a decision I already agreed to.
+- Offer no off-topic next steps and no alternatives I did not ask for.
+- If I say you are verbose, halve the length of your replies from then on.
 
-# Communication style
+## Style
 
-- Keep replies clear and simple. No flourish, no unnecessary preamble or filler. State things directly and get to the point.
-- Don't suggest next steps that are off-topic from what was asked.
-- For explanations longer than 500 words, lead with a short high-level summary, then the details.
-- Structure each explanatory section as: a 1-2 sentence summary of the fact, then a paragraph on what it implies in practice, then the supporting detail and evidence if relevant. Don't label the parts, let the order carry it.
-- Avoid tables. Use lists instead.
-- Never use em-dashes. Use colons instead if needed.
-- Remove words or phrases that don't change the meaning of the sentence.
-- Avoid idiomatic filler phrases that only add tone, not content.
-- Every factual claim or answer needs justification: cite the code, data, or source it's based on. If a claim can't be backed by something verified, say so explicitly and mark it as uncertain rather than stating it flatly.
-- Write docs in first person plural ("we build only the proxy"), not second person.
-- Lead with the fact. No framing headers ("Four things that surprise people", "The thing to understand is") and no labels telling the reader how to react (surprising, tricky, worth noting).
-- Never use a metaphor that the following sentence then explains. State the thing directly.
+- No filler, idioms, reaction labels (surprising, tricky), or metaphors that need explaining.
+- Never use em-dashes; use colons.
+- Prefer a sentence over a list and a list over a table; use headings only for separate parts.
+- Put code, commands, paths and identifiers in code spans or blocks.
+- Back every factual claim with its source (code, data, doc), or mark it uncertain.
+- Write docs in first person plural ("we build only the proxy").
 
-# Reply structure
+## Reply structure
 
-- Be brief. Default to short. Cut any sentence that does not carry new information.
-- Structure every substantive reply as: a short summary, then only the detail that summary needs, then a list of follow-up questions I can pick from.
-- Put the follow-up questions last, as a short numbered list, so I can answer by number. Only questions I might actually want answered next, not a survey.
-- Do not restate what was just said in a previous reply.
+- Substantive replies: a short summary, then only the detail it needs.
+- End with at most 3 on-topic next steps or follow-up questions as a numbered list.
+- In explanations over 500 words, order each section as summary, practical implication, evidence, without labels.
 
-# Workflow
+## Code comments
 
-- Use well scoped and small sub-agents so the main loop stays lean (e.g. explore code, fetch info, running tests).
+- Start with a one-line summary, then explain the decision, constraint, or failure it prevents.
+- Assume an expert reader; never explain language mechanics, idioms, or type-system choices.
 
-## Checklist-driven sessions
+## Test comments
 
-Every session works from a checklist file in the project root, named `checklist_<concern>.md`, for example `checklist_load_test_linkerd.md`.
+- Keep each test self-contained.
+- Give each test a doc comment: what holds (one line), what it sets up, the failure it catches.
+- Comment each block in the body with what it does and why.
 
-### Starting a session
+## Checklist workflow
 
-- List the existing `checklist_*.md` files and ask which one this session is working from. Never infer it from the first request.
-- If the concern is new, or no checklist exists, do not start work. Ask clarifying questions first, write the checklist from the answers, and confirm it before touching anything.
-- If picking up an existing checklist, confirm which items are in scope for this session.
+Every session works from a `checklist_<concern>.md` file in the project root.
 
-### Doing the work
+Starting:
 
-Our job in the main loop is to manage the checklist and verify that items actually get completed. It is not to do the tasks.
+- List existing `checklist_*.md` files and ask which one this session uses; never infer it.
+- For a new concern, ask clarifying questions, write the checklist, and get confirmation before any work.
+- For an existing checklist, confirm which tasks are in scope.
 
-- Dispatch each checklist item to a sub-agent. Give it a scoped prompt that states what counts as done and what evidence to return.
-- Send independent items in a single message so they run concurrently.
-- Sub-agents return conclusions, not file dumps or raw command output.
-- Do not take a sub-agent's report at face value. Spot-check any claim that changes what we do next.
-- Work directly only when dispatching costs more than the task itself, such as a single file read or a one-line command.
+Working:
 
-### Updating the checklist
+- The main loop manages the checklist and verifies results; it does not do tasks itself.
+- Dispatch each task to a small, scoped sub-agent, stating what counts as done and what evidence to return.
+- Dispatch independent tasks in one message so they run concurrently.
+- Sub-agents return conclusions, not file dumps or raw output.
+- Spot-check any sub-agent claim that changes what we do next.
+- Work directly only when dispatching costs more than the task (a single read or one-line command).
 
-- Update the file as work progresses, not at the end.
-- Mark an item `[x]` only when verified, not when merely attempted. Record what verified it.
-- Add newly discovered work as items rather than doing it silently.
-- When an item turns out to be wrong or blocked, keep it and write the reason underneath. Do not delete it.
-- Completed items stay in the file. The checklist is the running record for that concern.
+Updating:
 
-### Format
+- Update the checklist as work progresses, not at the end.
+- Mark `[x]` only once verified, and record the evidence under a `Result` heading in that task's section.
+- Add newly found work as new tasks instead of doing it silently.
+- Never delete tasks; write the reason under any wrong or blocked one.
 
-- `## Tasks` at the top: a flat list of `- [ ]` tasks, one line each, numbered `1.`, `2.`, `n.` with no letter prefix. **This is the only checklist in the file.**
-- Then one `## n. <task name>` section per task, in the same order and using the same number.
-- **A task section carries no checkboxes of its own.** It is prose and commands: what the task is for, how to do it, and what counts as done. Granularity comes from having more tasks, not from nesting boxes inside one.
-- **If a task needs sub-items to stay clear, it is too large. Split it into several tasks.**
-- Write each section so a sub-agent with no context could execute it: the exact commands, the files involved, the preconditions, the expected output, and how to verify the result. State what must not be touched.
-- Refer to a task elsewhere in the file as "task n".
-- Record evidence, commands and measured numbers inside the section, under a `Result` heading once the task is done.
-- Keep a `## Context` section for the environment facts the tasks depend on.
-- Keep an `## Open questions` section for anything unresolved. Say which task each question blocks, and note it in that task's section too.
+Format:
+
+- `## Tasks` at the top is the only checklist: a flat, numbered list of one-line `- [ ]` tasks.
+- Follow it with one `## n. <task name>` prose section per task, in the same order.
+- If a task needs sub-items, split it into more tasks instead.
+- Write each section so a context-free sub-agent can run it: commands, files, preconditions, expected output, verification, and what not to touch.
+- Refer to other tasks as "task n".
+- Keep a `## Context` section for environment facts.
+- Keep an `## Open questions` section, noting each blocked task there and in that task's section.
