@@ -10,7 +10,7 @@ y = 10
 size = 10.0
 
 [font.normal]
-family = "Inconsolata"
+# family = "Inconsolata"
 style = "Regular"
 
 [colors.primary]

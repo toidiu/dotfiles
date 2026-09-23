@@ -64,11 +64,12 @@ alias gp="git pull; git fetch --all --prune"
 alias gpp="git push origin HEAD"
 
 ### JJ Aliases
-alias jn="jj new "
-alias je="jj edit "
-alias jd="jj describe "
-alias jb="jj bookmark "
-alias jf="jj git fetch "
+# alias jn="jj new "
+# alias je="jj edit "
+# alias jd="jj describe "
+# alias jb="jj bookmark "
+# alias jf="jj git fetch "
+
 
 # grep
 function psgrep() {
