@@ -1,0 +1,57 @@
+{
+  "permissions": {
+    "allow": [
+      "LSP",
+      "Bash(curl *)",
+      "Bash(grep *)",
+      "Bash(find *)",
+      "Bash(ls *)",
+      "Bash(cat *)",
+      "Bash(tail *)",
+      "Bash(head *)",
+      "Bash(rg *)",
+      "Bash(sed -n *)",
+      "Bash(wc *)",
+      "Bash(sort *)",
+      "Bash(uniq *)",
+      "Bash(cut *)",
+      "Bash(tr *)",
+      "Bash(jq *)",
+      "Bash(yq *)",
+      "Bash(diff *)",
+      "Bash(comm *)",
+      "Bash(du *)",
+      "Bash(df *)",
+      "Bash(file *)",
+      "Bash(stat *)",
+      "Bash(tree *)",
+      "Bash(basename *)",
+      "Bash(dirname *)",
+      "Bash(realpath *)",
+      "Bash(echo *)",
+      "Bash(pwd *)",
+      "Bash(which *)",
+      "Bash(date *)"
+    ],
+    "defaultMode": "default"
+  },
+  "model": "sonnet",
+  "enabledPlugins": {
+    "buoyant-claude@buoyant-claude": true,
+    "rust-analyzer-lsp@claude-plugins-official": true
+  },
+  "extraKnownMarketplaces": {
+    "buoyant-claude": {
+      "source": {
+        "source": "directory",
+        "path": "/Users/apoorv/projects/buoyant-claude"
+      }
+    }
+  },
+  "voice": {
+    "enabled": true,
+    "mode": "hold"
+  },
+  "theme": "light",
+  "voiceEnabled": true
+}

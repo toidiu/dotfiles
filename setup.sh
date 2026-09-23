@@ -30,5 +30,7 @@ ln -si .dotfiles/ctags .ctags;
 ln -si ~/.dotfiles/alacritty.toml ~/.config/alacritty/alacritty.toml;
 
 # ai
-ln -si ~/.dotfiles/opencode.jsonc ~/.config/opencode/opencode.jsonc;
-ln -si ~/.dotfiles/CLAUDE.md ~/.claude/CLAUDE.md;
+ln -si ~/.dotfiles/ai/opencode.jsonc ~/.config/opencode/opencode.jsonc;
+ln -si ~/.dotfiles/ai/CLAUDE.md ~/.claude/CLAUDE.md;
+ln -si ~/.dotfiles/ai/settings.json ~/.claude/settings.json;
+ln -si ~/.dotfiles/ai/agents ~/.claude
