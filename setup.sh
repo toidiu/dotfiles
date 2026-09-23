@@ -33,4 +33,10 @@ ln -si ~/.dotfiles/alacritty.toml ~/.config/alacritty/alacritty.toml;
 ln -si ~/.dotfiles/ai/opencode.jsonc ~/.config/opencode/opencode.jsonc;
 ln -si ~/.dotfiles/ai/CLAUDE.md ~/.claude/CLAUDE.md;
 ln -si ~/.dotfiles/ai/settings.json ~/.claude/settings.json;
-ln -si ~/.dotfiles/ai/agents ~/.claude
+ln -si ~/.dotfiles/ai/agents ~/.claude;
+
+# ai skills (linked one by one — ~/.claude/skills also holds non-dotfiles content, so it can't be a single symlink)
+mkdir -p ~/.claude/skills;
+for skill in ~/.dotfiles/ai/skills/*/; do
+  ln -si "$skill" ~/.claude/skills/"$(basename "$skill")";
+done

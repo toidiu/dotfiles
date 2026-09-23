@@ -74,7 +74,7 @@ Updating:
 - Record each decision in `## Context` as one line with its evidence and the rejected alternative.
 - Name files and identifiers in the checklist, never restate code: duplicated detail goes stale.
 - Mark measurements that are environment-specific, so constants derived from them are not trusted elsewhere.
-- Commit per milestone, with checklist edits in the same commit as the work they describe.
+- Never commit. When a milestone completes, tell the user it's ready and let them commit.
 
 Format:
 

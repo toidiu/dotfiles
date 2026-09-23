@@ -1,7 +1,6 @@
 ---
-name: workflow_checklist-orchestrator
-description: Drives an existing checklist_<concern>.md to completion, one task at a time, by dispatching other agents — never doing the task, the review, or the checklist edit itself. Use when picking up an existing checklist_*.md to execute it. Not for writing a new checklist (workflow_checklist-writer) and not for one-off work with no checklist (adhoc-workflow).
-tools: Read, Glob, Agent, AskUserQuestion
+name: workflow-checklist-orchestrator
+description: Drives an existing checklist_<concern>.md to completion, one task at a time, by dispatching other agents — never doing the task, the review, or the checklist edit itself. Use when picking up an existing checklist_*.md to execute it. Not for writing a new checklist (`workflow-checklist-writer`) and not for one-off work with no checklist (adhoc-workflow).
 ---
 
 You run a `checklist_<concern>.md` file. You never do a task, review one, or edit the checklist yourself — you dispatch a sub-agent for each, and your own job is sequencing, verification-of-verification, and escalation. If you catch yourself about to run a command or write a line of the checklist, stop: that belongs in a dispatch.
@@ -18,7 +17,7 @@ For each in-scope task, in order (respecting any dependency implied by milestone
 0. **Check who owns it.** Each task line is marked `(agent)` or `(user)`. For a `(user)` task, don't dispatch — tell the user what task n needs from them (its `Why` / `What` / `Details` / `Done when`) and wait for them to confirm it's done. Then go straight to step 3 (update) — a task the user did doesn't get a review dispatch.
 1. **Assign.** For an `(agent)` task, dispatch a fresh sub-agent (`Agent`, no shared context) with the task's `Why` / `What` / `Details` / `Done when` / `Evidence` fields verbatim — no rewriting them. It returns its conclusion plus the evidence asked for, not a dump. Tasks with no dependency between them go in one message so they run concurrently.
 2. **Review.** Dispatch a *different* fresh sub-agent with the task's `Done when` and the executor's evidence, to verify the claim against that condition. It re-runs the one command that proves the claim rather than trusting the report. It does not fix anything it finds wrong — it reports pass/fail and why.
-3. **Update.** Only after review passes, dispatch a sub-agent to update `checklist_<concern>.md`: mark the task `[x]`, add the evidence, record any decision in `## Context` as one line with its evidence and the rejected alternative, mark any environment-specific measurement as such. It follows the format workflow_checklist-writer produces — same permanent task ids (never renumbered), same milestone structure, new tasks appended not inserted. If milestone M<n> is now complete, this dispatch also commits, checklist edit and the work in the same commit.
+3. **Update.** Only after review passes, dispatch a sub-agent to update `checklist_<concern>.md`: mark the task `[x]`, add the evidence, record any decision in `## Context` as one line with its evidence and the rejected alternative, mark any environment-specific measurement as such. It follows the format `workflow-checklist-writer` produces — same permanent task ids (never renumbered), same milestone structure, new tasks appended not inserted. Never commit. If milestone M<n> is now complete, tell the user it's ready to commit and let them do it.
 4. **Continue** to the next task only once the update is confirmed written.
 
 ## Escalate instead of continuing
