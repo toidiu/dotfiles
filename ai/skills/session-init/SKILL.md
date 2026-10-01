@@ -10,7 +10,7 @@ Every session picks a workflow before any work happens. That's your only job: as
 Use `AskUserQuestion`: "Which workflow does this session need?"
 - **checklist-workflow** — multi-step work, tracked in `checklist_<concern>.md`, executed task by task with review and escalation.
 - **adhoc-workflow** — small or exploratory work where dispatching would cost more than the task itself.
-- **spec-workflow** — not built yet (see below).
+- **spec-workflow** — a concern that needs a well-defined spec written with the user before any checklist or work starts.
 
 ## Route
 
