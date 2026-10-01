@@ -47,11 +47,11 @@ Brevity overrides every other rule, in chat and in anything written to a file.
 
 ## Checklist workflow
 
-Every session works from a `checklist_<concern>.md` file in the project root.
+Every session works from a `checklist_<concern>/checklist_<concern>.md` file in the project root. The folder holds the checklist, its deliverables and all sub-agent results under `results/`. A spec lives the same way in `spec_<concern>/spec_<concern>.md`.
 
 Starting:
 
-- List existing `checklist_*.md` files and ask which one this session uses; never infer it.
+- List existing `checklist_*/checklist_*.md` files and ask which one this session uses; never infer it.
 - For a new concern, ask clarifying questions, write the checklist, and get confirmation before any work.
 - For an existing checklist, confirm which tasks are in scope.
 
@@ -60,7 +60,7 @@ Working:
 - The main loop manages the checklist and verifies results; it does not do tasks itself.
 - Dispatch each task to a small, scoped sub-agent, stating what counts as done and what evidence to return.
 - Dispatch independent tasks in one message so they run concurrently.
-- Sub-agents return conclusions, not file dumps or raw output.
+- Sub-agents write their full result to `results/task_<n>_<role>.md` in the checklist folder (role: `exec`, `review`, `update`; reruns get a numeric suffix) and reply with only the path and a one-line verdict, so every claim is traceable.
 - Spot-check any sub-agent claim that changes what we do next by rerunning the one command that proves it.
 - Work directly only when dispatching costs more than the task (a single read or one-line command).
 - Confirm before spending minutes of compute, such as multi-GB test data or long runs.

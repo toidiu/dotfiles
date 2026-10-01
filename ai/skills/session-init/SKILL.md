@@ -8,16 +8,16 @@ Every session picks a workflow before any work happens. That's your only job: as
 ## Ask
 
 Use `AskUserQuestion`: "Which workflow does this session need?"
-- **checklist-workflow** — multi-step work, tracked in `checklist_<concern>.md`, executed task by task with review and escalation.
+- **checklist-workflow** — multi-step work, tracked in `checklist_<concern>/checklist_<concern>.md`, executed task by task with review and escalation.
 - **adhoc-workflow** — small or exploratory work where dispatching would cost more than the task itself.
 - **spec-workflow** — a concern that needs a well-defined spec written with the user before any checklist or work starts.
 
 ## Route
 
 **checklist-workflow:**
-1. `Glob` for `checklist_*.md`.
+1. `Glob` for `checklist_*/checklist_*.md` (each checklist lives in its own folder with its sub-agent results).
 2. If one matches the concern, immediately call `Skill` with `skill: workflow-checklist-orchestrator` — do not ask the user anything first, it handles confirming scope from there.
-3. If none matches, immediately call `Skill` with `skill: workflow-checklist-writer` — do not ask the user what the concern is yourself, that skill's job is to ask it. Once it's written the file, tell the user it's ready for `workflow-checklist-orchestrator` — don't chain that invocation automatically; let a checklist get reviewed before it's run.
+3. If none matches, immediately call `Skill` with `skill: workflow-checklist-writer` — do not ask the user what the concern is yourself, that skill's job is to ask it. Once it's written the checklist folder, tell the user it's ready for `workflow-checklist-orchestrator` — don't chain that invocation automatically; let a checklist get reviewed before it's run.
 
 In both cases, calling the `Skill` tool is the next action, not a sentence describing what you're about to do.
 
@@ -25,7 +25,8 @@ In both cases, calling the `Skill` tool is the next action, not a sentence descr
 Proceed directly — no checklist, no sub-agent chain.
 
 **spec-workflow:**
-Not built yet. Say so, and describe the intended chain so whoever builds it doesn't have to rediscover it: write/review a spec doc first (reusing `workflow-spec-writer` once it exists), then generate a checklist from it (reusing `workflow-checklist-writer`), then run `workflow-checklist-orchestrator` on that checklist. Ask the user whether to fall back to checklist-workflow or adhoc-workflow for now, or stop here.
+1. `Glob` for `spec_*/spec_*.md` (each spec lives in its own folder). Immediately call `Skill` with `skill: workflow-spec-writer` — do not ask the user what the concern is yourself, that skill's job is to ask it. It iterates with the user to a finalized spec, then hands off to `workflow-checklist-writer` itself.
+2. Once `workflow-checklist-writer` has written `checklist_<concern>/checklist_<concern>.md` from that spec, tell the user it's ready for `workflow-checklist-orchestrator` — don't chain that invocation automatically; let a checklist get reviewed before it's run.
 
 ## Style
 

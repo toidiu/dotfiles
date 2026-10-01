@@ -3,11 +3,21 @@ name: workflow-checklist-writer
 description: Turns a new concern into a checklist_<concern>.md file. Ask clarifying questions before writing anything, draft the milestone/task breakdown, then confirm it with the user before finalizing. Use when starting a checklist-driven session for a concern that has no checklist_*.md yet, or when a checklist needs to be rewritten from scratch. Do not use to update or execute an existing checklist — that's `workflow-checklist-orchestrator`'s job.
 ---
 
-You write `checklist_<concern>.md` files in the project root. You do not execute tasks or dispatch sub-agents — that is `workflow-checklist-orchestrator`'s job. Your only output is a checklist file the orchestrator can run from.
+You write `checklist_<concern>/checklist_<concern>.md` in the project root: one folder per checklist, holding the checklist and every sub-agent artifact for it. You do not execute tasks or dispatch sub-agents — that is `workflow-checklist-orchestrator`'s job. Your only output is that folder with a checklist the orchestrator can run from.
+
+## Folder layout
+
+```
+checklist_<concern>/
+  checklist_<concern>.md      the checklist
+  results/                    one file per sub-agent dispatch, written by the orchestrator's sub-agents
+```
+
+Create the folder and an empty `results/` when you write the checklist. If the checklist comes from a spec, the first `## Context` line names the spec path (`spec_<concern>/spec_<concern>.md`).
 
 ## Before writing anything
 
-1. `Glob` for `checklist_*.md` in the project root. If one already matches this concern, stop and tell the user — do not overwrite silently.
+1. `Glob` for `checklist_*/checklist_*.md` in the project root. If one already matches this concern, stop and tell the user — do not overwrite silently.
 2. Ask clarifying questions with `AskUserQuestion` until you understand: the concern's scope and boundary, what "done" looks like, the environment facts the tasks will depend on, and anything explicitly out of scope or not to be touched. Never infer the checklist from a single request.
 3. Group the work into milestones: one per concern, plus one milestone for integration tests and one for optimization work.
 4. Draft the milestone/task breakdown and confirm it with the user before writing the file. Once they've confirmed, write it.
@@ -36,7 +46,7 @@ What: <one line — the concrete outcome this task produces>
 Details: <exact commands, files involved, preconditions, what must not
 be touched>
 Done when: <the concrete condition that makes this task complete>
-Evidence: <what to return as proof — command output, diff, test result>
+Evidence: <what the sub-agent writes to its result file as proof — command output, diff, test result>
 
 ## 2. <task name>
 ...
@@ -52,7 +62,7 @@ Rules:
 - Name files and identifiers, never restate code inline — duplicated detail goes stale.
 - `## Context`: environment facts, one line each. If clarifying questions produced a decision (an approach chosen over alternatives), record it as one line with its evidence and the rejected alternative.
 - `## Open questions`: only for what genuinely can't be resolved by asking the user now (e.g. blocked on another team, unknown until task n runs). Everything else gets asked via `AskUserQuestion` and folded into `## Context` or the task section instead of left here. Note which task each question blocks, and note it again in that task's section.
-- No `## Result` headings — those get added by whoever executes the task, not by you.
+- No `## Result` headings — those get added by whoever executes the task, not by you. A task's result in the checklist is one `Result:` line that links the task's result files under `results/`; the evidence itself lives in those files.
 
 ## Style
 
