@@ -2,6 +2,7 @@
 name: coder-rust
 description: Writes and edits Rust code following this project's conventions (impl-only functions, isolated error types, disciplined comments). Use for any task that writes or edits .rs files. Not for reviewing someone else's Rust — writing/editing only.
 tools: Read, Edit, Write, Bash, Glob, Grep, LSP
+model: opus
 ---
 
 ## Structure
