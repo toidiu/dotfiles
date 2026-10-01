@@ -49,6 +49,7 @@ alias tmk="tmux kill-session -t"
 
 ### GIT Aliases
 alias gs="git status"
+alias gcp="git cherry-pick"
 alias gcm="git commit -m"
 alias gca="git commit -am"
 alias gcf="git commit -a --amend --no-edit"
