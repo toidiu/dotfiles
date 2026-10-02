@@ -1,9 +1,9 @@
 ---
-name: workflow-spec-writer
-description: Works with the user, iteratively, to turn a request into a finalized spec_<concern>.md file, then hands off to `workflow-checklist-writer` to turn that spec into a checklist. Use when starting spec-workflow for a concern with no finalized spec yet, or when revising an existing spec. Do not use to write the checklist itself or execute tasks — that's `workflow-checklist-writer`'s and `workflow-checklist-orchestrator`'s job.
+name: toidiu-workflow-spec-writer
+description: Works with the user, iteratively, to turn a request into a finalized spec_<concern>.md file, then hands off to `toidiu-workflow-checklist-writer` to turn that spec into a checklist. Use when starting spec-workflow for a concern with no finalized spec yet, or when revising an existing spec. Do not use to write the checklist itself or execute tasks — that's `toidiu-workflow-checklist-writer`'s and `toidiu-workflow-checklist-orchestrator`'s job.
 ---
 
-You write `spec_<concern>/spec_<concern>.md` in the project root, iterating with the user until they explicitly finalize it. You do not write checklists or execute tasks — once finalized, you hand off to `workflow-checklist-writer`.
+You write `spec_<concern>/spec_<concern>.md` in the project root, iterating with the user until they explicitly finalize it. You do not write checklists or execute tasks — once finalized, you hand off to `toidiu-workflow-checklist-writer`.
 
 ## Folder layout
 
@@ -21,7 +21,7 @@ If you dispatch a sub-agent (for example to research a question the spec depends
 
 1. `Glob` for `spec_*/spec_*.md`. If one already matches this concern:
    - Status `DRAFT`: keep iterating on it, don't start over.
-   - Status `FINAL`: ask whether the user wants to revise it (reopens as `DRAFT`) or go straight to `workflow-checklist-writer`.
+   - Status `FINAL`: ask whether the user wants to revise it (reopens as `DRAFT`) or go straight to `toidiu-workflow-checklist-writer`.
 2. Ask clarifying questions with `AskUserQuestion` until you understand:
    - the problem being solved and who it's for;
    - the goals, explicit non-goals and constraints;
@@ -67,7 +67,7 @@ Rules:
 
 ## Handoff
 
-Once status is `FINAL`: tell the user in one line, then call `Skill` with `skill: workflow-checklist-writer`, passing the concern name, the spec path (`spec_<concern>/spec_<concern>.md`) and this spec's `Goals` / `Requirements` / `Done criteria`. The checklist gets its own folder, `checklist_<concern>/`; do not write it inside the spec folder. Those replace `workflow-checklist-writer`'s own clarifying-question step, since the spec already answers scope and done — but it still confirms the milestone/task breakdown with the user before writing, per its own rules.
+Once status is `FINAL`: tell the user in one line, then call `Skill` with `skill: toidiu-workflow-checklist-writer`, passing the concern name, the spec path (`spec_<concern>/spec_<concern>.md`) and this spec's `Goals` / `Requirements` / `Done criteria`. The checklist gets its own folder, `checklist_<concern>/`; do not write it inside the spec folder. Those replace `toidiu-workflow-checklist-writer`'s own clarifying-question step, since the spec already answers scope and done — but it still confirms the milestone/task breakdown with the user before writing, per its own rules.
 
 ## Style
 

@@ -37,17 +37,9 @@
   },
   "model": "sonnet",
   "enabledPlugins": {
-    "buoyant-claude@buoyant-claude": true,
     "rust-analyzer-lsp@claude-plugins-official": true
   },
-  "extraKnownMarketplaces": {
-    "buoyant-claude": {
-      "source": {
-        "source": "directory",
-        "path": "/Users/apoorv/projects/buoyant-claude"
-      }
-    }
-  },
+  "extraKnownMarketplaces": {},
   "voice": {
     "enabled": true,
     "mode": "hold"

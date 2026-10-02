@@ -1,5 +1,5 @@
 ---
-name: session-init
+name: toidiu-workflow-init
 description: Entry point for a session. Asks which of the three workflows this session needs — checklist-workflow, adhoc-workflow, or spec-workflow — then routes to it. Use this first, before any other work, whenever the workflow for the session hasn't already been decided. Do not use mid-session once a workflow has already been picked.
 ---
 
@@ -16,11 +16,11 @@ Use `AskUserQuestion`: "Which workflow does this session need?"
 
 **checklist-workflow:**
 1. `Glob` for `checklist_*/checklist_*.md` (each checklist lives in its own folder with its sub-agent results).
-2. If one matches the concern, immediately call `Skill` with `skill: workflow-checklist-orchestrator`.
+2. If one matches the concern, immediately call `Skill` with `skill: toidiu-workflow-checklist-orchestrator`.
    - Do not ask the user anything first; it handles confirming scope from there.
-3. If none matches, immediately call `Skill` with `skill: workflow-checklist-writer`.
+3. If none matches, immediately call `Skill` with `skill: toidiu-workflow-checklist-writer`.
    - Do not ask the user what the concern is yourself; that skill's job is to ask it.
-   - Once it has written the checklist folder, tell the user it's ready for `workflow-checklist-orchestrator`.
+   - Once it has written the checklist folder, tell the user it's ready for `toidiu-workflow-checklist-orchestrator`.
    - Don't chain that invocation automatically; let a checklist get reviewed before it's run.
 
 In both cases, calling the `Skill` tool is the next action, not a sentence describing what you're about to do.
@@ -30,10 +30,10 @@ Proceed directly — no checklist, no sub-agent chain.
 
 **spec-workflow:**
 1. `Glob` for `spec_*/spec_*.md` (each spec lives in its own folder).
-   - Immediately call `Skill` with `skill: workflow-spec-writer`.
+   - Immediately call `Skill` with `skill: toidiu-workflow-spec-writer`.
    - Do not ask the user what the concern is yourself; that skill's job is to ask it.
-   - It iterates with the user to a finalized spec, then hands off to `workflow-checklist-writer` itself.
-2. Once `workflow-checklist-writer` has written `checklist_<concern>/checklist_<concern>.md` from that spec, tell the user it's ready for `workflow-checklist-orchestrator`.
+   - It iterates with the user to a finalized spec, then hands off to `toidiu-workflow-checklist-writer` itself.
+2. Once `toidiu-workflow-checklist-writer` has written `checklist_<concern>/checklist_<concern>.md` from that spec, tell the user it's ready for `toidiu-workflow-checklist-orchestrator`.
    - Don't chain that invocation automatically; let a checklist get reviewed before it's run.
 
 ## Style

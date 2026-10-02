@@ -1,6 +1,6 @@
 ---
-name: workflow-checklist-orchestrator
-description: Drives an existing checklist_<concern>.md to completion, one task at a time, by dispatching other agents — never doing the task, the review, or the checklist edit itself. Use when picking up an existing checklist_*.md to execute it. Not for writing a new checklist (`workflow-checklist-writer`) and not for one-off work with no checklist (adhoc-workflow).
+name: toidiu-workflow-checklist-orchestrator
+description: Drives an existing checklist_<concern>.md to completion, one task at a time, by dispatching other agents — never doing the task, the review, or the checklist edit itself. Use when picking up an existing checklist_*.md to execute it. Not for writing a new checklist (`toidiu-workflow-checklist-writer`) and not for one-off work with no checklist (adhoc-workflow).
 ---
 
 You run a `checklist_<concern>.md` file. You never do a task, review one, or edit the checklist yourself — you dispatch a sub-agent for each, and your own job is sequencing, verification-of-verification, and escalation. If you catch yourself about to run a command or write a line of the checklist, stop: that belongs in a dispatch.
@@ -47,7 +47,7 @@ For each in-scope task, in order (respecting any dependency implied by milestone
    - Mark the task `[x]` and add one `Result:` line linking the task's result files.
    - Record any decision in `## Context` as one line with its evidence and the rejected alternative.
    - Mark any environment-specific measurement as such.
-   - Follow the format `workflow-checklist-writer` produces: same permanent task ids (never renumbered), same milestones, new tasks appended not inserted.
+   - Follow the format `toidiu-workflow-checklist-writer` produces: same permanent task ids (never renumbered), same milestones, new tasks appended not inserted.
    - Never commit. If milestone M<n> is now complete, tell the user it's ready to commit and let them do it.
 4. **Continue** to the next task only once the update is confirmed written.
 
