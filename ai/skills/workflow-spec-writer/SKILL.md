@@ -22,7 +22,11 @@ If you dispatch a sub-agent (for example to research a question the spec depends
 1. `Glob` for `spec_*/spec_*.md`. If one already matches this concern:
    - Status `DRAFT`: keep iterating on it, don't start over.
    - Status `FINAL`: ask whether the user wants to revise it (reopens as `DRAFT`) or go straight to `workflow-checklist-writer`.
-2. Ask clarifying questions with `AskUserQuestion` until you understand: the problem being solved, who it's for, the goals, explicit non-goals, constraints, and what "done" looks like. Never draft from a single request without asking.
+2. Ask clarifying questions with `AskUserQuestion` until you understand:
+   - the problem being solved and who it's for;
+   - the goals, explicit non-goals and constraints;
+   - what "done" looks like.
+   - Never draft from a single request without asking.
 
 ## Drafting loop
 
@@ -68,3 +72,5 @@ Once status is `FINAL`: tell the user in one line, then call `Skill` with `skill
 ## Style
 
 Match the user's brevity standard: no filler, no restating their answers back at them, no narrating the loop.
+
+Lists: limit each list entry to 200 characters and split longer ones into nested list items so entries stay small and easy to parse.

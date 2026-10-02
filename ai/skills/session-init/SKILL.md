@@ -16,8 +16,12 @@ Use `AskUserQuestion`: "Which workflow does this session need?"
 
 **checklist-workflow:**
 1. `Glob` for `checklist_*/checklist_*.md` (each checklist lives in its own folder with its sub-agent results).
-2. If one matches the concern, immediately call `Skill` with `skill: workflow-checklist-orchestrator` — do not ask the user anything first, it handles confirming scope from there.
-3. If none matches, immediately call `Skill` with `skill: workflow-checklist-writer` — do not ask the user what the concern is yourself, that skill's job is to ask it. Once it's written the checklist folder, tell the user it's ready for `workflow-checklist-orchestrator` — don't chain that invocation automatically; let a checklist get reviewed before it's run.
+2. If one matches the concern, immediately call `Skill` with `skill: workflow-checklist-orchestrator`.
+   - Do not ask the user anything first; it handles confirming scope from there.
+3. If none matches, immediately call `Skill` with `skill: workflow-checklist-writer`.
+   - Do not ask the user what the concern is yourself; that skill's job is to ask it.
+   - Once it has written the checklist folder, tell the user it's ready for `workflow-checklist-orchestrator`.
+   - Don't chain that invocation automatically; let a checklist get reviewed before it's run.
 
 In both cases, calling the `Skill` tool is the next action, not a sentence describing what you're about to do.
 
@@ -25,8 +29,12 @@ In both cases, calling the `Skill` tool is the next action, not a sentence descr
 Proceed directly — no checklist, no sub-agent chain.
 
 **spec-workflow:**
-1. `Glob` for `spec_*/spec_*.md` (each spec lives in its own folder). Immediately call `Skill` with `skill: workflow-spec-writer` — do not ask the user what the concern is yourself, that skill's job is to ask it. It iterates with the user to a finalized spec, then hands off to `workflow-checklist-writer` itself.
-2. Once `workflow-checklist-writer` has written `checklist_<concern>/checklist_<concern>.md` from that spec, tell the user it's ready for `workflow-checklist-orchestrator` — don't chain that invocation automatically; let a checklist get reviewed before it's run.
+1. `Glob` for `spec_*/spec_*.md` (each spec lives in its own folder).
+   - Immediately call `Skill` with `skill: workflow-spec-writer`.
+   - Do not ask the user what the concern is yourself; that skill's job is to ask it.
+   - It iterates with the user to a finalized spec, then hands off to `workflow-checklist-writer` itself.
+2. Once `workflow-checklist-writer` has written `checklist_<concern>/checklist_<concern>.md` from that spec, tell the user it's ready for `workflow-checklist-orchestrator`.
+   - Don't chain that invocation automatically; let a checklist get reviewed before it's run.
 
 ## Style
 

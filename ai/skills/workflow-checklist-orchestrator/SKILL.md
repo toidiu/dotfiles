@@ -7,25 +7,48 @@ You run a `checklist_<concern>.md` file. You never do a task, review one, or edi
 
 ## Starting a run
 
-1. `Glob` for `checklist_*/checklist_*.md`. If more than one exists, ask which this run is for — never infer it.
-2. `Read` the file. Its folder is the run folder: the checklist and every sub-agent artifact live there, results under `results/` (create it if missing). Confirm with the user which tasks (by number) are in scope for this run before dispatching anything.
+1. `Glob` for `checklist_*/checklist_*.md`.
+   - If one exists, ask which this run is for or if we want a new checklist session.
+2. `Read` the file.
+   - Its folder is the run folder: the checklist and every sub-agent artifact live there.
+   - Results go under `results/` (create it if missing).
+   - Confirm with the user which tasks (by number) are in scope before dispatching anything.
 
 ## Results files
 
 Every sub-agent writes its full result to a file, so each claim is traceable, and replies with only the file path and a one-line verdict.
-- Path: `<run folder>/results/task_<n>_<role>.md`, where role is `exec`, `review` or `update`. A rework or re-review adds a numeric suffix (`task_<n>_exec_2.md`); never overwrite an earlier file.
-- Content: the task number, what was done or checked, the evidence the task's `Evidence:` field asks for (commands run and their output, URLs fetched and what each stated), and the verdict.
-- Put the exact result path in every dispatch prompt, and tell the sub-agent to write there with no other files touched outside the task's own `Details`.
-- You read the file only when the verdict changes what happens next. Hand the executor's file path to the reviewer instead of pasting evidence.
+- Path: `<run folder>/results/task_<n>_<role>.md`, where role is `exec`, `review` or `update`.
+  - A rework or re-review adds a numeric suffix (`task_<n>_exec_2.md`); never overwrite an earlier file.
+- Content:
+  - the task number, what was done or checked, and the verdict;
+  - the evidence the task's `Evidence:` field asks for (commands run and their output, URLs fetched and what each stated).
+- Put the exact result path in every dispatch prompt.
+  - Tell the sub-agent to write there and touch no other file outside the task's own `Details`.
+- Read a result file only when the verdict changes what happens next.
+  - Hand the executor's file path to the reviewer instead of pasting evidence.
 
 ## The per-task loop
 
 For each in-scope task, in order (respecting any dependency implied by milestone grouping):
 
-0. **Check who owns it.** Each task line is marked `(agent)` or `(user)`. For a `(user)` task, don't dispatch — tell the user what task n needs from them (its `Why` / `What` / `Details` / `Done when`) and wait for them to confirm it's done. Then go straight to step 3 (update) — a task the user did doesn't get a review dispatch.
-1. **Assign.** For an `(agent)` task, dispatch a fresh sub-agent (`Agent`, no shared context) with the task's `Why` / `What` / `Details` / `Done when` / `Evidence` fields verbatim — no rewriting them — plus its result file path. It writes the evidence to that file and returns the path and a one-line verdict, not a dump. Tasks with no dependency between them go in one message so they run concurrently.
-2. **Review.** Dispatch a *different* fresh sub-agent with the task's `Done when`, the executor's result file path (not a paraphrase of it) and its own result file path, to verify the claim against that condition. It re-runs the one command that proves the claim rather than trusting the report. It does not fix anything it finds wrong — it writes pass/fail and why to its result file.
-3. **Update.** Only after review passes, dispatch a sub-agent to update `checklist_<concern>.md`: mark the task `[x]`, add one `Result:` line linking the task's result files, record any decision in `## Context` as one line with its evidence and the rejected alternative, mark any environment-specific measurement as such. It follows the format `workflow-checklist-writer` produces — same permanent task ids (never renumbered), same milestone structure, new tasks appended not inserted. Never commit. If milestone M<n> is now complete, tell the user it's ready to commit and let them do it.
+0. **Check who owns it.** Each task line is marked `(agent)` or `(user)`.
+   - For a `(user)` task, don't dispatch.
+   - Tell the user what task n needs from them (its `Why` / `What` / `Details` / `Done when`) and wait for confirmation.
+   - Then go straight to step 3 (update); a task the user did doesn't get a review dispatch.
+1. **Assign.** For an `(agent)` task, dispatch a fresh sub-agent (`Agent`, no shared context).
+   - Pass the task's `Why` / `What` / `Details` / `Done when` / `Evidence` fields verbatim, no rewriting, plus its result file path.
+   - It writes the evidence to that file and returns the path and a one-line verdict, not a dump.
+   - Tasks with no dependency between them go in one message so they run concurrently.
+2. **Review.** Dispatch a *different* fresh sub-agent to verify the claim against the task's `Done when`.
+   - Pass the `Done when`, the executor's result file path (not a paraphrase of it) and its own result file path.
+   - It re-runs the one command that proves the claim rather than trusting the report.
+   - It fixes nothing; it writes pass/fail and why to its result file.
+3. **Update.** Only after review passes, dispatch a sub-agent to update `checklist_<concern>.md`.
+   - Mark the task `[x]` and add one `Result:` line linking the task's result files.
+   - Record any decision in `## Context` as one line with its evidence and the rejected alternative.
+   - Mark any environment-specific measurement as such.
+   - Follow the format `workflow-checklist-writer` produces: same permanent task ids (never renumbered), same milestones, new tasks appended not inserted.
+   - Never commit. If milestone M<n> is now complete, tell the user it's ready to commit and let them do it.
 4. **Continue** to the next task only once the update is confirmed written.
 
 ## Escalate instead of continuing
@@ -38,6 +61,10 @@ Stop the loop and use `AskUserQuestion` — do not pick a default and proceed �
 - a genuinely unresolved `## Open questions` item blocks the next task
 
 Escalations state the task number, what was found, and the options — not just "something's wrong."
+
+## Lists in deliverables
+
+Tell every executor and update sub-agent that list entries in any document they write (deliverables, result files, checklist lines) are at most 200 characters, with longer ones split into nested list items. A reviewer checks this with a length check, not by eye.
 
 ## What you forward to the user
 

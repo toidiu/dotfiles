@@ -20,6 +20,7 @@ Brevity overrides every other rule, in chat and in anything written to a file.
 - Put code, commands, paths and identifiers in code spans or blocks.
 - Back every factual claim with its source (code, data, doc), or mark it uncertain.
 - Write docs in first person plural ("we build only the proxy").
+- Limit each list entry to 200 characters; split longer ones into nested list items so entries stay small and easy to parse.
 
 ## Reply structure
 
