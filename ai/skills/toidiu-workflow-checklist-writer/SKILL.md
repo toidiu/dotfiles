@@ -10,10 +10,11 @@ You write `checklist_<concern>/checklist_<concern>.md` in the project root: one 
 ```
 checklist_<concern>/
   checklist_<concern>.md      the checklist
-  results/                    one file per sub-agent dispatch, written by the orchestrator's sub-agents
+  agent_runs/                 one file per sub-agent dispatch (exec/review/update), written by the orchestrator's sub-agents
+  results.md                  default final deliverable (report); other deliverables (PoCs, scripts) sit beside it, not in a subfolder
 ```
 
-Create the folder and an empty `results/` when you write the checklist. If the checklist comes from a spec, the first `## Context` line names the spec path (`spec_<concern>/spec_<concern>.md`).
+Create the folder and an empty `agent_runs/` when you write the checklist; deliverables go directly in the folder. If the checklist comes from a spec, the first `## Context` line names the spec path (`spec_<concern>/spec_<concern>.md`).
 
 ## Before writing anything
 
@@ -39,18 +40,30 @@ Create the folder and an empty `results/` when you write the checklist. If the c
 ...
 
 ## Context
-<environment facts every task section depends on>
+
+<short summary paragraph: what we build, how, and what consumes the result>
+
+<environment facts every task section depends on, one list item each>
 
 ## Open questions
 <anything unresolved, and which task number it blocks>
 
 ## 1. <task name>
-Why: <one line — the reason this task exists>
-What: <one line — the concrete outcome this task produces>
-Details: <exact commands, files involved, preconditions, what must not
-be touched>
-Done when: <the concrete condition that makes this task complete>
-Evidence: <what the sub-agent writes to its result file as proof — command output, diff, test result>
+
+Why:
+<one line — the reason this task exists>
+
+What:
+<one line — the concrete outcome this task produces>
+
+Details:
+<exact commands, files involved, preconditions, what must not be touched>
+
+Done when:
+<the concrete condition that makes this task complete>
+
+Evidence:
+<what the sub-agent writes to its result file as proof — command output, diff, test result>
 
 ## 2. <task name>
 ...
@@ -65,19 +78,22 @@ Rules:
 - Task numbers are permanent ids. Number sequentially across all milestones as you write; whoever updates the file later never renumbers, only appends.
 - Each `## n. <task name>` section carries no checkboxes of its own.
   - It opens with `Why:` and `What:` (one line each), then `Details:`, `Done when:`, and `Evidence:`.
+  - Each label sits alone on its line with its content on the next line, and a blank line separates fields, so each renders and parses separately.
+  - Any later field (`Format:`, `Result:`) follows the same layout.
   - Write it so a sub-agent with zero context could execute it.
   - The orchestrator hands these fields to the sub-agent verbatim, so they must stand alone.
 - If a task needs sub-items to stay clear, it's too large — split it into more tasks, don't nest.
 - Refer to a task elsewhere in the file as "task n".
 - Name files and identifiers, never restate code inline — duplicated detail goes stale.
-- `## Context`: environment facts, one line each.
+- `## Context` opens with a short high-level summary paragraph (3 to 4 sentences) so a reader gets the whole picture before the details.
+  - Then come the environment facts, one line each.
   - A decision from clarifying questions (an approach chosen over alternatives) is one line with its evidence and the rejected alternative.
 - `## Open questions`: only for what genuinely can't be resolved by asking the user now (e.g. blocked on another team, unknown until task n runs).
   - Everything else gets asked via `AskUserQuestion` and folded into `## Context` or the task section.
   - Note which task each question blocks, and note it again in that task's section.
 - No `## Result` headings: whoever executes the task adds them, not you.
-  - A task's result in the checklist is one `Result:` line linking its result files under `results/`.
-  - The evidence itself lives in those files.
+  - A task's result in the checklist is one `Result:` line linking its result files under `agent_runs/`.
+  - The evidence itself lives in those files; any final deliverable the task produces lives in the checklist folder itself (default `results.md`).
 
 ## Style
 

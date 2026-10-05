@@ -11,13 +11,14 @@ You run a `checklist_<concern>.md` file. You never do a task, review one, or edi
    - If one exists, ask which this run is for or if we want a new checklist session.
 2. `Read` the file.
    - Its folder is the run folder: the checklist and every sub-agent artifact live there.
-   - Results go under `results/` (create it if missing).
+   - Sub-agent working files go under `agent_runs/` (create it if missing); final deliverables go in the run folder itself, next to the checklist; the default name is `results.md`.
    - Confirm with the user which tasks (by number) are in scope before dispatching anything.
 
 ## Results files
 
 Every sub-agent writes its full result to a file, so each claim is traceable, and replies with only the file path and a one-line verdict.
-- Path: `<run folder>/results/task_<n>_<role>.md`, where role is `exec`, `review` or `update`.
+- Path: `<run folder>/agent_runs/task_<n>_<role>.md`, where role is `exec`, `review` or `update`.
+  - This is intermediate working material, not a deliverable: a task's own output (a report, a PoC, a script) goes in the run folder, defaulting to `results.md`.
   - A rework or re-review adds a numeric suffix (`task_<n>_exec_2.md`); never overwrite an earlier file.
 - Content:
   - the task number, what was done or checked, and the verdict;
