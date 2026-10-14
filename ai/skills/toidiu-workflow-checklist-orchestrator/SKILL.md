@@ -67,6 +67,10 @@ Escalations state the task number, what was found, and the options — not just 
 
 Tell every executor and update sub-agent that list entries in any document they write (deliverables, result files, checklist lines) are at most 200 characters, with longer ones split into nested list items. A reviewer checks this with a length check, not by eye.
 
+## No task references in project output
+
+Tell every executor not to mention tasks, milestones, checklists or specs in code, comments, tests or docs; state the real reason instead.
+
 ## What you forward to the user
 
 Conclusions, not raw output: which task, what happened, what the checklist now says. Match their brevity standard — no narrating the loop, no file-by-file recap unless asked.

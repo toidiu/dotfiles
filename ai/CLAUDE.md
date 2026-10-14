@@ -41,14 +41,15 @@ Brevity overrides every other rule, in chat and in anything written to a file.
 
 ## Rust
 
-- No free functions: every function belongs to an `impl` block on a struct or enum. Use a unit struct if there is no state.
-- Exceptions: `main` and `#[test]` functions. Test helpers go on a test-only struct.
-- A helper truly shared across the codebase goes in `src/util.rs`, still inside an `impl` block. Create `util.rs` only when such a helper exists.
-- Error types live in `src/error.rs`, not in the module that returns them.
+Write or edit `.rs` files only through the `coder-rust` agent; it holds the Rust conventions.
+
+## Shell scripts
+
+Write or edit `.sh` files only through the `coder-shell-script` agent; it holds the shell conventions.
 
 ## Checklist workflow
 
-Every session works from a `checklist_<concern>/checklist_<concern>.md` file in the project root. The folder holds the checklist, its deliverables and all sub-agent results under `results/`. A spec lives the same way in `spec_<concern>/spec_<concern>.md`.
+Every session works from a `checklist_<concern>/checklist_<concern>.md` file in the project root. The folder holds the checklist, its deliverables and all sub-agent results under `agent_runs/`. A spec lives the same way in `spec_<concern>/spec_<concern>.md`.
 
 Starting:
 
@@ -61,7 +62,7 @@ Working:
 - The main loop manages the checklist and verifies results; it does not do tasks itself.
 - Dispatch each task to a small, scoped sub-agent, stating what counts as done and what evidence to return.
 - Dispatch independent tasks in one message so they run concurrently.
-- Sub-agents write their full result to `results/task_<n>_<role>.md` in the checklist folder (role: `exec`, `review`, `update`; reruns get a numeric suffix) and reply with only the path and a one-line verdict, so every claim is traceable.
+- Sub-agents write their full result to `agent_runs/task_<n>_<role>.md` in the checklist folder (role: `exec`, `review`, `update`; reruns get a numeric suffix) and reply with only the path and a one-line verdict, so every claim is traceable.
 - Spot-check any sub-agent claim that changes what we do next by rerunning the one command that proves it.
 - Work directly only when dispatching costs more than the task (a single read or one-line command).
 - Confirm before spending minutes of compute, such as multi-GB test data or long runs.
@@ -80,7 +81,8 @@ Updating:
 Format:
 
 - `## Tasks` at the top is the only checklist: a flat, numbered list of one-line `- [ ]` tasks, grouped under `### M<n>. <name>` milestone headings.
-- One concern per milestone, plus a milestone for integration tests and one for optimization work.
+- One concern per milestone; the spec's requirements drive the milestones, with no extra ones added.
+- If the deliverable is an app, a test showing it works end to end is part of the final deliverable.
 - Task numbers are permanent ids: never renumber when reordering, and append new tasks to their milestone.
 - Follow it with one `## n. <task name>` prose section per task, in the same order.
 - If a task needs sub-items, split it into more tasks instead.

@@ -24,7 +24,7 @@ Create the folder and an empty `agent_runs/` when you write the checklist; deliv
    - the environment facts the tasks will depend on;
    - anything explicitly out of scope or not to be touched.
    - Never infer the checklist from a single request.
-3. Group the work into milestones: one per concern, plus one milestone for integration tests and one for optimization work.
+3. Group the work into milestones, one per concern, driven by the requirements; add no other milestones. If the deliverable is an app, an end-to-end test showing it works is part of the final deliverable.
 4. Draft the milestone/task breakdown and confirm it with the user before writing the file. Once they've confirmed, write it.
 
 ## Format (exact — do not deviate)
@@ -86,6 +86,7 @@ Rules:
 - Refer to a task elsewhere in the file as "task n".
 - Name files and identifiers, never restate code inline — duplicated detail goes stale.
 - `## Context` opens with a short high-level summary paragraph (3 to 4 sentences) so a reader gets the whole picture before the details.
+- After that paragraph, `## Context` has an ASCII diagram of the system the checklist works on (components, data flow, layout); reuse the spec's when there is one.
   - Then come the environment facts, one line each.
   - A decision from clarifying questions (an approach chosen over alternatives) is one line with its evidence and the rejected alternative.
 - `## Open questions`: only for what genuinely can't be resolved by asking the user now (e.g. blocked on another team, unknown until task n runs).

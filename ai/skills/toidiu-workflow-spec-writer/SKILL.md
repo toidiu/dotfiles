@@ -12,10 +12,13 @@ One folder per spec holds the spec and every artifact made while writing it:
 ```
 spec_<concern>/
   spec_<concern>.md
-  results/        one file per sub-agent dispatch (research, review)
+  alternatives/   only when the design has competing approaches (see Alternatives)
+    00_goals.md
+    alt_<letter>_<name>.md
+  agent_runs/     one file per sub-agent dispatch (research, review)
 ```
 
-If you dispatch a sub-agent (for example to research a question the spec depends on), give it a path `spec_<concern>/results/<topic>.md` to write its full findings to, and have it reply with only the path and a one-line conclusion. Read the file only when the conclusion changes the spec.
+If you dispatch a sub-agent (for example to research a question the spec depends on), give it a path `spec_<concern>/agent_runs/<topic>.md` to write its full findings to, and have it reply with only the path and a one-line conclusion. Read the file only when the conclusion changes the spec.
 
 ## Before drafting
 
@@ -64,6 +67,22 @@ Rules:
 - Every section is one line per point, not prose paragraphs.
 - `## Open questions` must be empty before status can go `FINAL` — resolve each by asking the user, don't guess.
 - Name concrete things (files, systems, commands, interfaces); don't restate code.
+- Every spec has ASCII diagrams: the problem (today's flow), the target architecture, and the code or folder layout.
+
+## Alternatives
+
+When the user asks for alternatives, or an open question has competing approaches, write them under `alternatives/`, one file each.
+
+- `00_goals.md` comes first:
+  - Opens with the recommendation in one or two sentences.
+  - Lists the numbered goals (`G1`, `G2`, ...) every alternative is evaluated against, drawn from the spec's goals and requirements.
+  - Holds a goal-by-alternative summary table and notes approaches rejected before evaluation, with the goal each fails.
+- One `alt_<letter>_<name>.md` per alternative:
+  - Starts with a short paragraph explaining what the alternative is and how it works.
+  - Has an ASCII diagram of how the alternative works; `00_goals.md` has one contrasting all alternatives.
+  - Evaluates the alternative against each goal, one line per goal: `G<n> yes|no|weak: <reason>`.
+  - Ends with its cost (what it adds or constrains).
+- Keep only the parts that differ between alternatives in the alt files; shared design goes in the spec.
 
 ## Handoff
 
